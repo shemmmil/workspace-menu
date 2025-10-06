@@ -80,7 +80,7 @@ out
 
 # Nuxt.js build / generate output
 .nuxt
-dist
+# dist - Закомментировано для включения собранных файлов в Git (необходимо для установки через Git)
 
 # Gatsby files
 .cache/
