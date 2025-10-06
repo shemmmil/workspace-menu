@@ -267,7 +267,7 @@ export const Widget: React.FC<WidgetProps> = ({
   };
 
   return (
-    <>
+    <div className="workspace-menu-root">
       <DropdownMenu>
         <DropdownMenuTrigger asChild>
           <Button
@@ -372,7 +372,7 @@ export const Widget: React.FC<WidgetProps> = ({
           </div>
         </DialogContent>
       </Dialog>
-    </>
+    </div>
   );
 };
 

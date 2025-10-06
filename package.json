@@ -16,17 +16,31 @@
     "prepare": "npm run build"
   },
   "dependencies": {
-    "lucide-react": "^0.263.1",
-    "@radix-ui/react-dialog": "^1.0.0",
-    "@radix-ui/react-dropdown-menu": "^2.0.0",
-    "@radix-ui/react-slot": "^1.0.0",
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.0.0",
     "tailwind-merge": "^2.0.0"
   },
   "peerDependencies": {
     "react": "^18.0.0 || ^19.0.0",
-    "react-dom": "^18.0.0 || ^19.0.0"
+    "react-dom": "^18.0.0 || ^19.0.0",
+    "lucide-react": ">=0.263.0",
+    "@radix-ui/react-dialog": ">=1.0.0",
+    "@radix-ui/react-dropdown-menu": ">=2.0.0",
+    "@radix-ui/react-slot": ">=1.0.0"
+  },
+  "peerDependenciesMeta": {
+    "lucide-react": {
+      "optional": false
+    },
+    "@radix-ui/react-dialog": {
+      "optional": false
+    },
+    "@radix-ui/react-dropdown-menu": {
+      "optional": false
+    },
+    "@radix-ui/react-slot": {
+      "optional": false
+    }
   },
   "devDependencies": {
     "@rollup/plugin-commonjs": "^25.0.0",
