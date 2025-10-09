@@ -1,103 +1,110 @@
 @import "tailwindcss";
 
-@theme {
-  --color-border: hsl(214.3 31.8% 91.4%);
-  --color-input: hsl(214.3 31.8% 91.4%);
-  --color-ring: hsl(222.2 84% 4.9%);
-  --color-background: hsl(0 0% 100%);
-  --color-foreground: hsl(222.2 84% 4.9%);
-  --color-primary: hsl(222.2 47.4% 11.2%);
-  --color-primary-foreground: hsl(210 40% 98%);
-  --color-secondary: hsl(210 40% 96%);
-  --color-secondary-foreground: hsl(222.2 84% 4.9%);
-  --color-destructive: hsl(0 84.2% 60.2%);
-  --color-destructive-foreground: hsl(210 40% 98%);
-  --color-muted: hsl(210 40% 96%);
-  --color-muted-foreground: hsl(215.4 16.3% 46.9%);
-  --color-accent: hsl(210 40% 96%);
-  --color-accent-foreground: hsl(222.2 84% 4.9%);
-  --color-popover: hsl(0 0% 100%);
-  --color-popover-foreground: hsl(222.2 84% 4.9%);
-  --color-card: hsl(0 0% 100%);
-  --color-card-foreground: hsl(222.2 84% 4.9%);
-  
-  --radius-lg: 0.5rem;
-  --radius-md: calc(0.5rem - 2px);
-  --radius-sm: calc(0.5rem - 4px);
+/* Изолированные стили для workspace-menu - используем уникальные имена переменных */
+.workspace-menu-root {
+  /* Light theme variables - значения БЕЗ hsl() обертки */
+  --wm-background: 0 0% 100%;
+  --wm-foreground: 222.2 84% 4.9%;
+  --wm-card: 0 0% 100%;
+  --wm-card-foreground: 222.2 84% 4.9%;
+  --wm-popover: 0 0% 100%;
+  --wm-popover-foreground: 222.2 84% 4.9%;
+  --wm-primary: 222.2 47.4% 11.2%;
+  --wm-primary-foreground: 210 40% 98%;
+  --wm-secondary: 210 40% 96%;
+  --wm-secondary-foreground: 222.2 84% 4.9%;
+  --wm-muted: 210 40% 96%;
+  --wm-muted-foreground: 215.4 16.3% 46.9%;
+  --wm-accent: 210 40% 96%;
+  --wm-accent-foreground: 222.2 84% 4.9%;
+  --wm-destructive: 0 84.2% 60.2%;
+  --wm-destructive-foreground: 210 40% 98%;
+  --wm-border: 214.3 31.8% 91.4%;
+  --wm-input: 214.3 31.8% 91.4%;
+  --wm-ring: 222.2 84% 4.9%;
+  --wm-radius: 0.5rem;
 }
 
-/* Scoped CSS variables for workspace-menu components */
-.workspace-menu-root,
-.workspace-menu-root * {
-  /* Override Tailwind global variables with our scoped ones */
-  --color-background: hsl(0 0% 100%);
-  --color-foreground: hsl(222.2 84% 4.9%);
-  --color-card: hsl(0 0% 100%);
-  --color-card-foreground: hsl(222.2 84% 4.9%);
-  --color-popover: hsl(0 0% 100%);
-  --color-popover-foreground: hsl(222.2 84% 4.9%);
-  --color-primary: hsl(222.2 47.4% 11.2%);
-  --color-primary-foreground: hsl(210 40% 98%);
-  --color-secondary: hsl(210 40% 96%);
-  --color-secondary-foreground: hsl(222.2 84% 4.9%);
-  --color-muted: hsl(210 40% 96%);
-  --color-muted-foreground: hsl(215.4 16.3% 46.9%);
-  --color-accent: hsl(210 40% 96%);
-  --color-accent-foreground: hsl(222.2 84% 4.9%);
-  --color-destructive: hsl(0 84.2% 60.2%);
-  --color-destructive-foreground: hsl(210 40% 98%);
-  --color-border: hsl(214.3 31.8% 91.4%);
-  --color-input: hsl(214.3 31.8% 91.4%);
-  --color-ring: hsl(222.2 84% 4.9%);
+.workspace-menu-root.dark {
+  /* Dark mode variables - значения БЕЗ hsl() обертки */
+  --wm-background: 222.2 84% 4.9%;
+  --wm-foreground: 210 40% 98%;
+  --wm-card: 222.2 84% 4.9%;
+  --wm-card-foreground: 210 40% 98%;
+  --wm-popover: 222.2 84% 4.9%;
+  --wm-popover-foreground: 210 40% 98%;
+  --wm-primary: 210 40% 98%;
+  --wm-primary-foreground: 222.2 47.4% 11.2%;
+  --wm-secondary: 217.2 32.6% 17.5%;
+  --wm-secondary-foreground: 210 40% 98%;
+  --wm-muted: 217.2 32.6% 17.5%;
+  --wm-muted-foreground: 215 20.2% 65.1%;
+  --wm-accent: 217.2 32.6% 17.5%;
+  --wm-accent-foreground: 210 40% 98%;
+  --wm-destructive: 0 62.8% 30.6%;
+  --wm-destructive-foreground: 210 40% 98%;
+  --wm-border: 217.2 32.6% 17.5%;
+  --wm-input: 217.2 32.6% 17.5%;
+  --wm-ring: 212.7 26.8% 83.9%;
 }
 
-.workspace-menu-root.dark,
-.workspace-menu-root.dark * {
-  /* Dark mode colors */
-  --color-background: hsl(222.2 84% 4.9%);
-  --color-foreground: hsl(210 40% 98%);
-  --color-card: hsl(222.2 84% 4.9%);
-  --color-card-foreground: hsl(210 40% 98%);
-  --color-popover: hsl(222.2 84% 4.9%);
-  --color-popover-foreground: hsl(210 40% 98%);
-  --color-primary: hsl(210 40% 98%);
-  --color-primary-foreground: hsl(222.2 47.4% 11.2%);
-  --color-secondary: hsl(217.2 32.6% 17.5%);
-  --color-secondary-foreground: hsl(210 40% 98%);
-  --color-muted: hsl(217.2 32.6% 17.5%);
-  --color-muted-foreground: hsl(215 20.2% 65.1%);
-  --color-accent: hsl(217.2 32.6% 17.5%);
-  --color-accent-foreground: hsl(210 40% 98%);
-  --color-destructive: hsl(0 62.8% 30.6%);
-  --color-destructive-foreground: hsl(210 40% 98%);
-  --color-border: hsl(217.2 32.6% 17.5%);
-  --color-input: hsl(217.2 32.6% 17.5%);
-  --color-ring: hsl(212.7 26.8% 83.9%);
+/* Применяем стили напрямую к элементам виджета - с hsl() обертками */
+.workspace-menu-root .bg-background { background-color: hsl(var(--wm-background)) !important; }
+.workspace-menu-root .bg-foreground { background-color: hsl(var(--wm-foreground)) !important; }
+.workspace-menu-root .bg-popover { background-color: hsl(var(--wm-popover)) !important; }
+.workspace-menu-root .bg-card { background-color: hsl(var(--wm-card)) !important; }
+.workspace-menu-root .bg-primary { background-color: hsl(var(--wm-primary)) !important; }
+.workspace-menu-root .bg-secondary { background-color: hsl(var(--wm-secondary)) !important; }
+.workspace-menu-root .bg-muted { background-color: hsl(var(--wm-muted)) !important; }
+.workspace-menu-root .bg-accent { background-color: hsl(var(--wm-accent)) !important; }
+.workspace-menu-root .bg-destructive { background-color: hsl(var(--wm-destructive)) !important; }
+
+.workspace-menu-root .text-foreground { color: hsl(var(--wm-foreground)) !important; }
+.workspace-menu-root .text-popover-foreground { color: hsl(var(--wm-popover-foreground)) !important; }
+.workspace-menu-root .text-card-foreground { color: hsl(var(--wm-card-foreground)) !important; }
+.workspace-menu-root .text-primary { color: hsl(var(--wm-primary)) !important; }
+.workspace-menu-root .text-primary-foreground { color: hsl(var(--wm-primary-foreground)) !important; }
+.workspace-menu-root .text-secondary-foreground { color: hsl(var(--wm-secondary-foreground)) !important; }
+.workspace-menu-root .text-muted-foreground { color: hsl(var(--wm-muted-foreground)) !important; }
+.workspace-menu-root .text-accent-foreground { color: hsl(var(--wm-accent-foreground)) !important; }
+.workspace-menu-root .text-destructive-foreground { color: hsl(var(--wm-destructive-foreground)) !important; }
+
+.workspace-menu-root .border { border-color: hsl(var(--wm-border)) !important; }
+.workspace-menu-root .ring-offset-background { --tw-ring-offset-color: hsl(var(--wm-background)) !important; }
+
+/* Hover states */
+.workspace-menu-root .hover\:bg-accent:hover { background-color: hsl(var(--wm-accent)) !important; }
+.workspace-menu-root .hover\:text-accent-foreground:hover { color: hsl(var(--wm-accent-foreground)) !important; }
+.workspace-menu-root .hover\:bg-primary\/90:hover { background-color: hsl(var(--wm-primary) / 0.9) !important; }
+.workspace-menu-root .hover\:bg-secondary\/80:hover { background-color: hsl(var(--wm-secondary) / 0.8) !important; }
+.workspace-menu-root .hover\:bg-destructive\/90:hover { background-color: hsl(var(--wm-destructive) / 0.9) !important; }
+
+/* Focus states */
+.workspace-menu-root .focus\:bg-accent:focus { background-color: hsl(var(--wm-accent)) !important; }
+.workspace-menu-root .focus\:text-accent-foreground:focus { color: hsl(var(--wm-accent-foreground)) !important; }
+
+/* Data states */
+.workspace-menu-root [data-state="open"].bg-accent { background-color: hsl(var(--wm-accent)) !important; }
+
+/* Стили для Radix UI порталов - только для наших компонентов */
+[data-workspace-menu-portal] {
+  --wm-background: 0 0% 100%;
+  --wm-foreground: 222.2 84% 4.9%;
+  --wm-popover: 0 0% 100%;
+  --wm-popover-foreground: 222.2 84% 4.9%;
+  --wm-card: 0 0% 100%;
+  --wm-border: 214.3 31.8% 91.4%;
+  --wm-accent: 210 40% 96%;
+  --wm-accent-foreground: 222.2 84% 4.9%;
+  --wm-muted: 210 40% 96%;
+  --wm-ring: 222.2 84% 4.9%;
 }
 
-/* Глобальные стили для порталов Radix UI (dropdown menu и dialog) */
-[data-radix-popper-content-wrapper],
-[data-radix-popper-content-wrapper] *,
-[data-radix-portal],
-[data-radix-portal] * {
-  /* Override Tailwind global variables for portals */
-  --color-background: hsl(0 0% 100%);
-  --color-foreground: hsl(222.2 84% 4.9%);
-  --color-card: hsl(0 0% 100%);
-  --color-card-foreground: hsl(222.2 84% 4.9%);
-  --color-popover: hsl(0 0% 100%);
-  --color-popover-foreground: hsl(222.2 84% 4.9%);
-  --color-primary: hsl(222.2 47.4% 11.2%);
-  --color-primary-foreground: hsl(210 40% 98%);
-  --color-secondary: hsl(210 40% 96%);
-  --color-secondary-foreground: hsl(222.2 84% 4.9%);
-  --color-muted: hsl(210 40% 96%);
-  --color-muted-foreground: hsl(215.4 16.3% 46.9%);
-  --color-accent: hsl(210 40% 96%);
-  --color-accent-foreground: hsl(222.2 84% 4.9%);
-  --color-destructive: hsl(0 84.2% 60.2%);
-  --color-destructive-foreground: hsl(210 40% 98%);
-  --color-border: hsl(214.3 31.8% 91.4%);
-  --color-input: hsl(214.3 31.8% 91.4%);
-  --color-ring: hsl(222.2 84% 4.9%);
-}
+[data-workspace-menu-portal] .bg-popover { background-color: hsl(var(--wm-popover)) !important; }
+[data-workspace-menu-portal] .bg-background { background-color: hsl(var(--wm-background)) !important; }
+[data-workspace-menu-portal] .bg-accent { background-color: hsl(var(--wm-accent)) !important; }
+[data-workspace-menu-portal] .text-popover-foreground { color: hsl(var(--wm-popover-foreground)) !important; }
+[data-workspace-menu-portal] .text-accent-foreground { color: hsl(var(--wm-accent-foreground)) !important; }
+[data-workspace-menu-portal] .border { border-color: hsl(var(--wm-border)) !important; }
+[data-workspace-menu-portal] .hover\:bg-accent:hover { background-color: hsl(var(--wm-accent)) !important; }
+[data-workspace-menu-portal] .focus\:bg-accent:focus { background-color: hsl(var(--wm-accent)) !important; }
