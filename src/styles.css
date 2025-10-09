@@ -1,6 +1,3 @@
-@tailwind components;
-@tailwind utilities;
-
 /* Scoped CSS variables for workspace-menu components only */
 .workspace-menu-root {
   --wm-background: 0 0% 100%;

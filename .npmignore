@@ -1,0 +1,28 @@
+# Source files
+src/
+
+# Config files
+tsconfig.json
+rollup.config.js
+tailwind.config.js
+postcss.config.cjs
+
+# Documentation
+*.md
+!README.md
+
+# Development files
+.git
+.gitignore
+node_modules/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+
