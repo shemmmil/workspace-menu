@@ -228,5 +228,35 @@ const Widget = ({ currentApp, quickAccessApps = defaultQuickAccessApps, fullApps
                                                     }, children: jsx(ExternalLink, { className: "w-4 h-4" }) }))] }), jsx("h3", { className: "font-bold text-sm mb-2 leading-tight text-[#09090B]", children: app.title }), jsx("p", { className: "text-xs text-slate-500 leading-relaxed", children: app.description })] }) }, app.id))) })] }) })] }));
 };
 
+function styleInject(css, ref) {
+  if ( ref === void 0 ) ref = {};
+  var insertAt = ref.insertAt;
+
+  if (!css || typeof document === 'undefined') { return; }
+
+  var head = document.head || document.getElementsByTagName('head')[0];
+  var style = document.createElement('style');
+  style.type = 'text/css';
+
+  if (insertAt === 'top') {
+    if (head.firstChild) {
+      head.insertBefore(style, head.firstChild);
+    } else {
+      head.appendChild(style);
+    }
+  } else {
+    head.appendChild(style);
+  }
+
+  if (style.styleSheet) {
+    style.styleSheet.cssText = css;
+  } else {
+    style.appendChild(document.createTextNode(css));
+  }
+}
+
+var css_248z = ".workspace-menu-root{--wm-background:0 0% 100%;--wm-foreground:222.2 84% 4.9%;--wm-card:0 0% 100%;--wm-card-foreground:222.2 84% 4.9%;--wm-popover:0 0% 100%;--wm-popover-foreground:222.2 84% 4.9%;--wm-primary:222.2 47.4% 11.2%;--wm-primary-foreground:210 40% 98%;--wm-secondary:210 40% 96%;--wm-secondary-foreground:222.2 84% 4.9%;--wm-muted:210 40% 96%;--wm-muted-foreground:215.4 16.3% 46.9%;--wm-accent:210 40% 96%;--wm-accent-foreground:222.2 84% 4.9%;--wm-destructive:0 84.2% 60.2%;--wm-destructive-foreground:210 40% 98%;--wm-border:214.3 31.8% 91.4%;--wm-input:214.3 31.8% 91.4%;--wm-ring:222.2 84% 4.9%;--wm-radius:0.5rem}.workspace-menu-root.dark{--wm-background:222.2 84% 4.9%;--wm-foreground:210 40% 98%;--wm-card:222.2 84% 4.9%;--wm-card-foreground:210 40% 98%;--wm-popover:222.2 84% 4.9%;--wm-popover-foreground:210 40% 98%;--wm-primary:210 40% 98%;--wm-primary-foreground:222.2 47.4% 11.2%;--wm-secondary:217.2 32.6% 17.5%;--wm-secondary-foreground:210 40% 98%;--wm-muted:217.2 32.6% 17.5%;--wm-muted-foreground:215 20.2% 65.1%;--wm-accent:217.2 32.6% 17.5%;--wm-accent-foreground:210 40% 98%;--wm-destructive:0 62.8% 30.6%;--wm-destructive-foreground:210 40% 98%;--wm-border:217.2 32.6% 17.5%;--wm-input:217.2 32.6% 17.5%;--wm-ring:212.7 26.8% 83.9%}";
+styleInject(css_248z);
+
 export { Button, Card, CardContent, Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle, DropdownMenu, DropdownMenuContent, DropdownMenuGroup, DropdownMenuItem, DropdownMenuTrigger, Widget, Widget as default };
 //# sourceMappingURL=index.esm.js.map

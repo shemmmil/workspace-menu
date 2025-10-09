@@ -35,7 +35,8 @@ export default {
       },
       extensions: [".css"],
       minimize: true,
-      extract: "styles.css",
+      inject: true, // Автоматически инжектирует стили в <head>
+      extract: false, // Не извлекаем CSS в отдельный файл
     }),
   ],
   external: [

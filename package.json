@@ -6,7 +6,6 @@
   "main": "dist/index.js",
   "module": "dist/index.esm.js",
   "types": "dist/index.d.ts",
-  "style": "dist/styles.css",
   "files": [
     "dist"
   ],
@@ -15,9 +14,7 @@
       "import": "./dist/index.esm.js",
       "require": "./dist/index.js",
       "types": "./dist/index.d.ts"
-    },
-    "./dist/styles.css": "./dist/styles.css",
-    "./styles.css": "./dist/styles.css"
+    }
   },
   "scripts": {
     "build": "rollup -c",
