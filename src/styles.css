@@ -1,74 +1,103 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
 
-/* Scoped CSS variables for workspace-menu components only */
-.workspace-menu-root {
-  --wm-background: 0 0% 100%;
-  --wm-foreground: 222.2 84% 4.9%;
-  --wm-card: 0 0% 100%;
-  --wm-card-foreground: 222.2 84% 4.9%;
-  --wm-popover: 0 0% 100%;
-  --wm-popover-foreground: 222.2 84% 4.9%;
-  --wm-primary: 222.2 47.4% 11.2%;
-  --wm-primary-foreground: 210 40% 98%;
-  --wm-secondary: 210 40% 96%;
-  --wm-secondary-foreground: 222.2 84% 4.9%;
-  --wm-muted: 210 40% 96%;
-  --wm-muted-foreground: 215.4 16.3% 46.9%;
-  --wm-accent: 210 40% 96%;
-  --wm-accent-foreground: 222.2 84% 4.9%;
-  --wm-destructive: 0 84.2% 60.2%;
-  --wm-destructive-foreground: 210 40% 98%;
-  --wm-border: 214.3 31.8% 91.4%;
-  --wm-input: 214.3 31.8% 91.4%;
-  --wm-ring: 222.2 84% 4.9%;
-  --wm-radius: 0.5rem;
+@theme {
+  --color-border: hsl(214.3 31.8% 91.4%);
+  --color-input: hsl(214.3 31.8% 91.4%);
+  --color-ring: hsl(222.2 84% 4.9%);
+  --color-background: hsl(0 0% 100%);
+  --color-foreground: hsl(222.2 84% 4.9%);
+  --color-primary: hsl(222.2 47.4% 11.2%);
+  --color-primary-foreground: hsl(210 40% 98%);
+  --color-secondary: hsl(210 40% 96%);
+  --color-secondary-foreground: hsl(222.2 84% 4.9%);
+  --color-destructive: hsl(0 84.2% 60.2%);
+  --color-destructive-foreground: hsl(210 40% 98%);
+  --color-muted: hsl(210 40% 96%);
+  --color-muted-foreground: hsl(215.4 16.3% 46.9%);
+  --color-accent: hsl(210 40% 96%);
+  --color-accent-foreground: hsl(222.2 84% 4.9%);
+  --color-popover: hsl(0 0% 100%);
+  --color-popover-foreground: hsl(222.2 84% 4.9%);
+  --color-card: hsl(0 0% 100%);
+  --color-card-foreground: hsl(222.2 84% 4.9%);
+  
+  --radius-lg: 0.5rem;
+  --radius-md: calc(0.5rem - 2px);
+  --radius-sm: calc(0.5rem - 4px);
 }
 
-.workspace-menu-root.dark {
-  --wm-background: 222.2 84% 4.9%;
-  --wm-foreground: 210 40% 98%;
-  --wm-card: 222.2 84% 4.9%;
-  --wm-card-foreground: 210 40% 98%;
-  --wm-popover: 222.2 84% 4.9%;
-  --wm-popover-foreground: 210 40% 98%;
-  --wm-primary: 210 40% 98%;
-  --wm-primary-foreground: 222.2 47.4% 11.2%;
-  --wm-secondary: 217.2 32.6% 17.5%;
-  --wm-secondary-foreground: 210 40% 98%;
-  --wm-muted: 217.2 32.6% 17.5%;
-  --wm-muted-foreground: 215 20.2% 65.1%;
-  --wm-accent: 217.2 32.6% 17.5%;
-  --wm-accent-foreground: 210 40% 98%;
-  --wm-destructive: 0 62.8% 30.6%;
-  --wm-destructive-foreground: 210 40% 98%;
-  --wm-border: 217.2 32.6% 17.5%;
-  --wm-input: 217.2 32.6% 17.5%;
-  --wm-ring: 212.7 26.8% 83.9%;
+/* Scoped CSS variables for workspace-menu components */
+.workspace-menu-root,
+.workspace-menu-root * {
+  /* Override Tailwind global variables with our scoped ones */
+  --color-background: hsl(0 0% 100%);
+  --color-foreground: hsl(222.2 84% 4.9%);
+  --color-card: hsl(0 0% 100%);
+  --color-card-foreground: hsl(222.2 84% 4.9%);
+  --color-popover: hsl(0 0% 100%);
+  --color-popover-foreground: hsl(222.2 84% 4.9%);
+  --color-primary: hsl(222.2 47.4% 11.2%);
+  --color-primary-foreground: hsl(210 40% 98%);
+  --color-secondary: hsl(210 40% 96%);
+  --color-secondary-foreground: hsl(222.2 84% 4.9%);
+  --color-muted: hsl(210 40% 96%);
+  --color-muted-foreground: hsl(215.4 16.3% 46.9%);
+  --color-accent: hsl(210 40% 96%);
+  --color-accent-foreground: hsl(222.2 84% 4.9%);
+  --color-destructive: hsl(0 84.2% 60.2%);
+  --color-destructive-foreground: hsl(210 40% 98%);
+  --color-border: hsl(214.3 31.8% 91.4%);
+  --color-input: hsl(214.3 31.8% 91.4%);
+  --color-ring: hsl(222.2 84% 4.9%);
+}
+
+.workspace-menu-root.dark,
+.workspace-menu-root.dark * {
+  /* Dark mode colors */
+  --color-background: hsl(222.2 84% 4.9%);
+  --color-foreground: hsl(210 40% 98%);
+  --color-card: hsl(222.2 84% 4.9%);
+  --color-card-foreground: hsl(210 40% 98%);
+  --color-popover: hsl(222.2 84% 4.9%);
+  --color-popover-foreground: hsl(210 40% 98%);
+  --color-primary: hsl(210 40% 98%);
+  --color-primary-foreground: hsl(222.2 47.4% 11.2%);
+  --color-secondary: hsl(217.2 32.6% 17.5%);
+  --color-secondary-foreground: hsl(210 40% 98%);
+  --color-muted: hsl(217.2 32.6% 17.5%);
+  --color-muted-foreground: hsl(215 20.2% 65.1%);
+  --color-accent: hsl(217.2 32.6% 17.5%);
+  --color-accent-foreground: hsl(210 40% 98%);
+  --color-destructive: hsl(0 62.8% 30.6%);
+  --color-destructive-foreground: hsl(210 40% 98%);
+  --color-border: hsl(217.2 32.6% 17.5%);
+  --color-input: hsl(217.2 32.6% 17.5%);
+  --color-ring: hsl(212.7 26.8% 83.9%);
 }
 
 /* Глобальные стили для порталов Radix UI (dropdown menu и dialog) */
 [data-radix-popper-content-wrapper],
-[data-radix-portal] {
-  --wm-background: 0 0% 100%;
-  --wm-foreground: 222.2 84% 4.9%;
-  --wm-card: 0 0% 100%;
-  --wm-card-foreground: 222.2 84% 4.9%;
-  --wm-popover: 0 0% 100%;
-  --wm-popover-foreground: 222.2 84% 4.9%;
-  --wm-primary: 222.2 47.4% 11.2%;
-  --wm-primary-foreground: 210 40% 98%;
-  --wm-secondary: 210 40% 96%;
-  --wm-secondary-foreground: 222.2 84% 4.9%;
-  --wm-muted: 210 40% 96%;
-  --wm-muted-foreground: 215.4 16.3% 46.9%;
-  --wm-accent: 210 40% 96%;
-  --wm-accent-foreground: 222.2 84% 4.9%;
-  --wm-destructive: 0 84.2% 60.2%;
-  --wm-destructive-foreground: 210 40% 98%;
-  --wm-border: 214.3 31.8% 91.4%;
-  --wm-input: 214.3 31.8% 91.4%;
-  --wm-ring: 222.2 84% 4.9%;
-  --wm-radius: 0.5rem;
+[data-radix-popper-content-wrapper] *,
+[data-radix-portal],
+[data-radix-portal] * {
+  /* Override Tailwind global variables for portals */
+  --color-background: hsl(0 0% 100%);
+  --color-foreground: hsl(222.2 84% 4.9%);
+  --color-card: hsl(0 0% 100%);
+  --color-card-foreground: hsl(222.2 84% 4.9%);
+  --color-popover: hsl(0 0% 100%);
+  --color-popover-foreground: hsl(222.2 84% 4.9%);
+  --color-primary: hsl(222.2 47.4% 11.2%);
+  --color-primary-foreground: hsl(210 40% 98%);
+  --color-secondary: hsl(210 40% 96%);
+  --color-secondary-foreground: hsl(222.2 84% 4.9%);
+  --color-muted: hsl(210 40% 96%);
+  --color-muted-foreground: hsl(215.4 16.3% 46.9%);
+  --color-accent: hsl(210 40% 96%);
+  --color-accent-foreground: hsl(222.2 84% 4.9%);
+  --color-destructive: hsl(0 84.2% 60.2%);
+  --color-destructive-foreground: hsl(210 40% 98%);
+  --color-border: hsl(214.3 31.8% 91.4%);
+  --color-input: hsl(214.3 31.8% 91.4%);
+  --color-ring: hsl(222.2 84% 4.9%);
 }
