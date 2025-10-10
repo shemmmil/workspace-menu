@@ -325,7 +325,7 @@ export const Widget: React.FC<WidgetProps> = ({
               Список всех доступных приложений
             </DialogTitle>
           </DialogHeader>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mt-6">
+          <div className="grid grid-cols-3 gap-4 mt-6">
             {fullApps
               .filter((app) => app.id !== currentApp) // Убираем текущее приложение
               .map((app) => (
