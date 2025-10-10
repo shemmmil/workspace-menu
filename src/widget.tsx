@@ -27,6 +27,7 @@ import {
   Newspaper,
   FileCheck2,
   PencilRuler,
+  Handshake,
 } from "lucide-react";
 
 // Types
@@ -73,25 +74,25 @@ const defaultQuickAccessApps: QuickAccessApp[] = [
     id: "manager",
     title: "Панель руководителя",
     icon: <BarChart3 className="w-4 h-4 text-[#65A30D]" />,
-    url: "/manager",
+    url: "https://isup.sensata.kz",
   },
   {
     id: "partners",
     title: "Портал партнеров",
-    icon: <HandMetal className="w-4 h-4 text-[#a21caf]" />,
-    url: "/partners",
+    icon: <Handshake className="w-4 h-4 text-[#a21caf]" />,
+    url: "https://portal-prod.sensata.kz",
   },
   {
     id: "knowledge",
     title: "База знаний",
     icon: <Brain className="w-4 h-4 text-[#4F46E5]" />,
-    url: "/knowledge",
+    url: "https://wiki.sensata.kz/",
   },
   {
     id: "helpdesk",
     title: "Help Desk",
     icon: <Headphones className="w-4 h-4 text-[#4346A2]" />,
-    url: "/helpdesk",
+    url: "https://isup.sensata.kz/",
   },
 ];
 
