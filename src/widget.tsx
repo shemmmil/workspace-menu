@@ -63,7 +63,6 @@ export interface WidgetProps {
   currentApp?: AppId;
   quickAccessApps?: QuickAccessApp[];
   fullApps?: FullApp[];
-  onNavigate?: (url: string, appId: string) => void;
   className?: string;
   showAllServicesButton?: boolean;
 }
@@ -240,24 +239,19 @@ export const Widget: React.FC<WidgetProps> = ({
   currentApp,
   quickAccessApps = defaultQuickAccessApps,
   fullApps = defaultFullApps,
-  onNavigate,
   className = "",
   showAllServicesButton = true,
 }) => {
   const [isAppsModalOpen, setIsAppsModalOpen] = useState(false);
 
   const handleQuickAppClick = (app: QuickAccessApp) => {
-    if (onNavigate && app.url) {
-      onNavigate(app.url, app.id);
-    } else if (app.url) {
-      window.location.href = app.url;
+    if (app.url) {
+      window.open(app.url, "_blank");
     }
   };
 
   const handleFullAppClick = (app: FullApp) => {
-    if (onNavigate && app.url) {
-      onNavigate(app.url, app.id);
-    } else if (app.url) {
+    if (app.url) {
       window.open(app.url, "_blank");
     }
     setIsAppsModalOpen(false);

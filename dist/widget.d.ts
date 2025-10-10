@@ -18,7 +18,6 @@ export interface WidgetProps {
     currentApp?: AppId;
     quickAccessApps?: QuickAccessApp[];
     fullApps?: FullApp[];
-    onNavigate?: (url: string, appId: string) => void;
     className?: string;
     showAllServicesButton?: boolean;
 }
