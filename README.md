@@ -137,27 +137,51 @@ interface FullApp {
 
 ## Совместимость с Ant Design
 
-Виджет полностью совместим с Ant Design! Если у вас проект использует Ant Design, виджет будет корректно отображаться поверх всех компонентов Ant Design благодаря правильно настроенным z-index значениям.
+✅ **Виджет полностью изолирован и совместим с Ant Design!**
+
+### 🎯 Полная изоляция (версия 1.0.2+)
+
+Виджет использует передовую архитектуру изоляции:
+
+- **Изолированный DOM-контейнер**: все модальные окна рендерятся в отдельный контейнер
+- **CSS Reset**: глобальные стили не влияют на виджет
+- **Event Isolation**: события не конфликтуют с родительским приложением
+- **Высокий z-index**: компоненты всегда поверх Ant Design
+
+### Архитектура
+
+```
+document.body
+├── [ваше приложение с Ant Design]
+└── #workspace-menu-portal-root (изолированный контейнер)
+    └── Dialog & DropdownMenu компоненты
+```
 
 ### Технические детали
 
-- Dialog overlay: `z-index: 2000`
-- Dialog content: `z-index: 2001`
-- DropdownMenu: `z-index: 2000`
+| Компонент    | z-index | Описание                |
+| ------------ | ------- | ----------------------- |
+| Portal Root  | 2000    | Изолированный контейнер |
+| Dialog       | 2001    | Модальные окна          |
+| DropdownMenu | 2000    | Выпадающие меню         |
 
-Эти значения выше, чем у стандартных компонентов Ant Design (Modal: 1000, Dropdown: 1050, Tooltip: 1060), что гарантирует корректное отображение виджета.
+**Сравнение с Ant Design:**
+
+- Ant Design Modal: 1000
+- Ant Design Dropdown: 1050
+- **Workspace Menu**: 2000-2001 ✅
 
 ### Кастомная настройка z-index
 
-Если в вашем проекте используются кастомные z-index значения выше 2000, вы можете переопределить CSS переменную:
+Если нужно изменить z-index:
 
 ```css
-[data-workspace-menu-portal] {
-  --workspace-menu-z-index: 3000; /* ваше значение */
+[data-workspace-menu-portal-root] {
+  --workspace-menu-z-index: 3000;
 }
 ```
 
-Подробнее см. [ANTD_COMPATIBILITY.md](./ANTD_COMPATIBILITY.md)
+📖 Подробнее: [ANTD_COMPATIBILITY.md](./ANTD_COMPATIBILITY.md)
 
 ## Стилизация
 

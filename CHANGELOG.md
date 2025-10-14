@@ -5,21 +5,45 @@
 Формат основан на [Keep a Changelog](https://keepachangelog.com/ru/1.0.0/),
 и этот проект придерживается [Semantic Versioning](https://semver.org/lang/ru/).
 
+## [1.0.2] - 2025-10-14
+
+### Добавлено
+
+- **Полная изоляция от Ant Design и других библиотек**
+  - Создан изолированный portal контейнер (`#workspace-menu-portal-root`)
+  - Менеджер portal-контейнера (`src/lib/portal-container.ts`)
+  - Автоматическое создание и управление DOM-контейнером
+
+### Исправлено
+
+- **Критическое**: Полное решение проблем совместимости с Ant Design
+  - Изоляция событий через `stopPropagation()` на всех обработчиках
+  - CSS reset с использованием `all: revert` для сброса глобальных стилей
+  - Изоляция стилей через `isolation: isolate`
+  - Увеличенные z-index значения (2000-2001)
+  - Dialog и DropdownMenu теперь рендерятся в изолированный контейнер
+  - Предотвращение перехвата кликов компонентами Ant Design
+
+### Улучшено
+
+- Архитектура рендеринга порталов
+- Управление жизненным циклом portal-контейнера
+- Документация по совместимости (ANTD_COMPATIBILITY.md)
+- Добавлены диаграммы архитектуры изоляции
+
 ## [1.0.1] - 2025-10-14
 
 ### Исправлено
 
-- **Критическое**: Исправлена проблема совместимости с Ant Design
+- Начальное исправление z-index для совместимости с Ant Design
   - Увеличен z-index для Dialog компонентов (overlay: 2000, content: 2001)
   - Увеличен z-index для DropdownMenu компонентов (content: 2000, subcontent: 2001)
-  - Добавлена CSS изоляция для порталов виджета
-  - Виджет теперь корректно отображается поверх компонентов Ant Design
+  - Базовая CSS изоляция для порталов виджета
 
 ### Добавлено
 
 - Документация по совместимости с Ant Design (ANTD_COMPATIBILITY.md)
-- CSS переменная `--workspace-menu-z-index` для гибкой настройки z-index
-- Стили изоляции для предотвращения конфликтов стилей
+- CSS переменная `--workspace-menu-z-index`
 
 ## [1.0.0] - 2025-10-04
 
@@ -45,5 +69,6 @@
 - Экспорт UI компонентов для расширенного использования
 - Полная типизация TypeScript
 
+[1.0.2]: https://github.com/your-org/workspace-menu/releases/tag/v1.0.2
 [1.0.1]: https://github.com/your-org/workspace-menu/releases/tag/v1.0.1
 [1.0.0]: https://github.com/your-org/workspace-menu/releases/tag/v1.0.0

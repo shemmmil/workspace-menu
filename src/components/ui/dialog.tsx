@@ -5,6 +5,7 @@ import * as DialogPrimitive from "@radix-ui/react-dialog";
 import { XIcon } from "lucide-react";
 
 import { cn } from "@/lib/utils";
+import { getPortalContainer } from "@/lib/portal-container";
 
 function Dialog({
   ...props
@@ -55,9 +56,22 @@ function DialogContent({
 }: React.ComponentProps<typeof DialogPrimitive.Content> & {
   showCloseButton?: boolean;
 }) {
+  const [portalContainer, setPortalContainer] = React.useState<HTMLElement | null>(null);
+
+  React.useEffect(() => {
+    setPortalContainer(getPortalContainer());
+  }, []);
+
   return (
-    <DialogPortal data-slot="dialog-portal">
-      <div data-workspace-menu-portal="">
+    <DialogPortal container={portalContainer} data-slot="dialog-portal">
+      <div 
+        data-workspace-menu-portal=""
+        style={{ pointerEvents: 'auto' }}
+        onClick={(e) => {
+          // Prevent clicks from bubbling to parent app (Ant Design)
+          e.stopPropagation();
+        }}
+      >
         <DialogOverlay />
         <DialogPrimitive.Content
           data-slot="dialog-content"

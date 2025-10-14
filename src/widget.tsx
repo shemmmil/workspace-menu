@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Button } from "./components/ui/button";
 import {
   DropdownMenu,
@@ -29,6 +29,7 @@ import {
   PencilRuler,
   Handshake,
 } from "lucide-react";
+import { getPortalContainer, cleanupPortalContainer } from "./lib/portal-container";
 
 // Types
 export type AppId =
@@ -244,6 +245,17 @@ export const Widget: React.FC<WidgetProps> = ({
 }) => {
   const [isAppsModalOpen, setIsAppsModalOpen] = useState(false);
 
+  // Initialize portal container on mount
+  useEffect(() => {
+    getPortalContainer();
+    
+    // Cleanup portal container on unmount
+    return () => {
+      // Don't cleanup if other instances might be using it
+      // cleanupPortalContainer();
+    };
+  }, []);
+
   const handleQuickAppClick = (app: QuickAccessApp) => {
     if (app.url) {
       window.open(app.url, "_blank");
@@ -262,12 +274,22 @@ export const Widget: React.FC<WidgetProps> = ({
   };
 
   return (
-    <div className="workspace-menu-root">
+    <div 
+      className="workspace-menu-root"
+      onClick={(e) => {
+        // Stop event propagation to prevent conflicts with parent app
+        e.stopPropagation();
+      }}
+    >
       <DropdownMenu>
         <DropdownMenuTrigger asChild>
           <Button
             variant="outline"
             className={`w-full justify-between !px-4 !py-2.5 ${className}`}
+            onClick={(e) => {
+              // Prevent default Ant Design behaviors
+              e.stopPropagation();
+            }}
           >
             <div className="flex items-center gap-2">
               <LayoutGrid className="w-4 h-4 text-[#5C60CC]" />
@@ -283,7 +305,10 @@ export const Widget: React.FC<WidgetProps> = ({
               .map((app) => (
                 <DropdownMenuItem
                   key={app.id}
-                  onClick={() => handleQuickAppClick(app)}
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    handleQuickAppClick(app);
+                  }}
                   disabled={!app.url}
                 >
                   {app.icon}
@@ -294,7 +319,10 @@ export const Widget: React.FC<WidgetProps> = ({
             {showAllServicesButton && (
               <DropdownMenuItem
                 className="justify-between items-center"
-                onClick={handleAllServicesClick}
+                onClick={(e) => {
+                  e.stopPropagation();
+                  handleAllServicesClick();
+                }}
               >
                 <div className="flex items-center gap-2">
                   <LayoutGrid className="w-4 h-4" />
@@ -331,7 +359,10 @@ export const Widget: React.FC<WidgetProps> = ({
                       ? "cursor-pointer hover:shadow-md transition-shadow"
                       : ""
                   }
-                  onClick={() => app.url && handleFullAppClick(app)}
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    app.url && handleFullAppClick(app);
+                  }}
                 >
                   <CardContent className="p-4">
                     <div className="flex items-start justify-between mb-3 relative">

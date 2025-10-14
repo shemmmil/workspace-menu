@@ -5,6 +5,7 @@ import * as DropdownMenuPrimitive from "@radix-ui/react-dropdown-menu";
 import { CheckIcon, ChevronRightIcon, CircleIcon } from "lucide-react";
 
 import { cn } from "@/lib/utils";
+import { getPortalContainer } from "@/lib/portal-container";
 
 function DropdownMenu({
   ...props
@@ -36,9 +37,22 @@ function DropdownMenuContent({
   sideOffset = 4,
   ...props
 }: React.ComponentProps<typeof DropdownMenuPrimitive.Content>) {
+  const [portalContainer, setPortalContainer] = React.useState<HTMLElement | null>(null);
+
+  React.useEffect(() => {
+    setPortalContainer(getPortalContainer());
+  }, []);
+
   return (
-    <DropdownMenuPrimitive.Portal>
-      <div data-workspace-menu-portal="">
+    <DropdownMenuPrimitive.Portal container={portalContainer}>
+      <div 
+        data-workspace-menu-portal=""
+        style={{ pointerEvents: 'auto' }}
+        onClick={(e) => {
+          // Prevent clicks from bubbling to parent app (Ant Design)
+          e.stopPropagation();
+        }}
+      >
         <DropdownMenuPrimitive.Content
           data-slot="dropdown-menu-content"
           sideOffset={sideOffset}
