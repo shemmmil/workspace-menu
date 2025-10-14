@@ -194,3 +194,22 @@ body {
 [data-collapsible="icon"] .sensata-sidebar .flex.items-center.gap-2 {
 	justify-content: center;
 }
+
+/* Workspace menu portal isolation */
+[data-workspace-menu-portal] {
+	/* Ensure high z-index for compatibility with Ant Design */
+	--workspace-menu-z-index: 2000;
+	position: relative;
+	z-index: var(--workspace-menu-z-index);
+}
+
+/* Reset any inherited styles from Ant Design */
+[data-workspace-menu-portal] * {
+	box-sizing: border-box;
+}
+
+/* Ensure workspace menu root has proper isolation */
+.workspace-menu-root {
+	position: relative;
+	z-index: auto;
+}

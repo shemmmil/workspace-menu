@@ -5,6 +5,22 @@
 Формат основан на [Keep a Changelog](https://keepachangelog.com/ru/1.0.0/),
 и этот проект придерживается [Semantic Versioning](https://semver.org/lang/ru/).
 
+## [1.0.1] - 2025-10-14
+
+### Исправлено
+
+- **Критическое**: Исправлена проблема совместимости с Ant Design
+  - Увеличен z-index для Dialog компонентов (overlay: 2000, content: 2001)
+  - Увеличен z-index для DropdownMenu компонентов (content: 2000, subcontent: 2001)
+  - Добавлена CSS изоляция для порталов виджета
+  - Виджет теперь корректно отображается поверх компонентов Ant Design
+
+### Добавлено
+
+- Документация по совместимости с Ant Design (ANTD_COMPATIBILITY.md)
+- CSS переменная `--workspace-menu-z-index` для гибкой настройки z-index
+- Стили изоляции для предотвращения конфликтов стилей
+
 ## [1.0.0] - 2025-10-04
 
 ### Добавлено
@@ -29,4 +45,5 @@
 - Экспорт UI компонентов для расширенного использования
 - Полная типизация TypeScript
 
+[1.0.1]: https://github.com/your-org/workspace-menu/releases/tag/v1.0.1
 [1.0.0]: https://github.com/your-org/workspace-menu/releases/tag/v1.0.0
