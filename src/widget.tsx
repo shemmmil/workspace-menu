@@ -28,6 +28,8 @@ import {
   FileCheck2,
   PencilRuler,
   Handshake,
+  BookOpen,
+  HeadsetIcon,
 } from "lucide-react";
 
 // Types
@@ -91,7 +93,7 @@ const defaultQuickAccessApps: QuickAccessApp[] = [
     id: "helpdesk",
     title: "Help Desk",
     icon: <Headphones className="w-4 h-4 text-[#4346A2]" />,
-    url: "https://isup.sensata.kz/",
+    url: "https://help.sensata.kz/",
   },
 ];
 
@@ -104,6 +106,7 @@ const defaultFullApps: FullApp[] = [
       "Ваш почтовый ящик, Получение важных рассылок, Создание встреч и совещаний",
     icon: <Mail className="w-8 h-8 text-[#4346A2]" />,
     iconBg: "bg-[#EBECFF]",
+    url: "https://mail.sensata.kz/",
   },
   {
     id: "documentolog",
@@ -120,6 +123,7 @@ const defaultFullApps: FullApp[] = [
       "Корпоративные стандарты, Регламенты, Шаблоны документов, Руководства и мануалы",
     icon: <BarChart3 className="w-8 h-8 text-indigo-600" />,
     iconBg: "bg-indigo-100",
+    url: "https://wiki.sensata.kz/",
   },
   {
     id: "manager",
@@ -128,6 +132,7 @@ const defaultFullApps: FullApp[] = [
       "Контроль вех, еженедельные отчёты СМР, сводка по проектам, сервис планирования графиков СМР и ГПП",
     icon: <BarChart3 className="w-8 h-8 text-lime-600" />,
     iconBg: "bg-lime-100",
+    url: "https://isup.sensata.kz/",
   },
   {
     id: "partners",
@@ -136,6 +141,7 @@ const defaultFullApps: FullApp[] = [
       "Объявления о тендерах, Документы для участия, Результаты тендеров, Партнерские предложения",
     icon: <HandMetal className="w-8 h-8 text-fuchsia-600" />,
     iconBg: "bg-fuchsia-100",
+    url: "https://portal-prod.sensata.kz/",
   },
   {
     id: "bim360",
@@ -144,6 +150,7 @@ const defaultFullApps: FullApp[] = [
       "Взаимодействие с проектировщиками, контроль готовности РП, координация техотдела и стройки.",
     icon: <FileCheck2 className="w-8 h-8 text-blue-600" />,
     iconBg: "bg-blue-100",
+    url: "https://accounts.autodesk.com/logon?resume=%2Fas%2FrRFI1CMk89%2Fresume%2Fas%2Fauthorization.ping&spentity=null",
   },
   {
     id: "1c-estimate",
@@ -160,6 +167,7 @@ const defaultFullApps: FullApp[] = [
       "Сквозной учёт: сметные данные, договоры, поставки, оплаты и оперативная отчётность",
     icon: <MacroERPIcon />,
     iconBg: "bg-pink-100",
+    url: "https://macroerp.sensata.kz/",
   },
   {
     id: "plan-radar",
@@ -168,6 +176,47 @@ const defaultFullApps: FullApp[] = [
       "Учёт дефектов по строительно-монтажным работам, мониторинг статуса и работа с документацией",
     icon: <PencilRuler className="w-8 h-8 text-rose-600" />,
     iconBg: "bg-rose-100",
+    url: "https://www.planradar.com/login?redirect=https://www.planradar.com/dr/1287990?tab=projects",
+  },
+  {
+    id: "sensata-services",
+    title: "Sensata Services",
+    description:
+      "Подача заявок, оплата услуг, голосования и уведомления от управляющей компании.",
+    icon: <SensataServicesIcon />,
+    iconBg: "bg-indigo-100",
+    url: "https://services.sensata.kz/",
+  },
+  {
+    id: "refbook",
+    title: "База справочников",
+    description:
+      "Администрирование справочников: юр.лиц, проекты, статьи расходов, виды работ и др.",
+    icon: <RefbookIcon />,
+    iconBg: "bg-emerald-100",
+    url: "https://refbook.sensata.kz/",
+  },
+  {
+    id: "helpdesk",
+    title: "Help Desk (Служба поддержки)",
+    description: "Справочный центр и колл-центр поддержки партнеров",
+    icon: <HeadsetIcon className="w-8 h-8 text-blue-600" />,
+    url: "https://help.sensata.kz/",
+    iconBg: "bg-indigo-100",
+  },
+  {
+    id: "1c-accounting",
+    title: "1С: Бухгалтерия",
+    description: "Бухгалтерский учет, налоги и финансы",
+    icon: <OneCIcon />,
+    iconBg: "bg-amber-100",
+  },
+  {
+    id: "1c-hr",
+    title: "1С: ЗУП",
+    description: "Бухгалтерский учет, налоги и финансы",
+    icon: <OneCIcon />,
+    iconBg: "bg-amber-100",
   },
 ];
 
@@ -229,6 +278,47 @@ function MacroERPIcon() {
         clipRule="evenodd"
         d="M8 17.0529L16.0006 21.5318L8 26.0095V17.0529Z"
         fill="#D2D2D2"
+      />
+    </svg>
+  );
+}
+
+function SensataServicesIcon() {
+  return (
+    <svg
+      width="32"
+      height="32"
+      viewBox="0 0 32 32"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path
+        d="M4.00004 17.3333H5.33337V26.6666C5.33337 28.1373 6.52938 29.3333 8.00004 29.3333H24C25.4707 29.3333 26.6667 28.1373 26.6667 26.6666V17.3333H28C28.2637 17.3333 28.5214 17.255 28.7407 17.1085C28.9599 16.962 29.1307 16.7538 29.2316 16.5102C29.3325 16.2666 29.3589 15.9985 29.3075 15.7399C29.2561 15.4813 29.1291 15.2438 28.9427 15.0573L16.9427 3.05731C16.6927 2.80735 16.3536 2.66693 16 2.66693C15.6465 2.66693 15.3074 2.80735 15.0574 3.05731L3.05737 15.0573C2.87096 15.2438 2.74402 15.4813 2.6926 15.7399C2.64117 15.9985 2.66758 16.2666 2.76847 16.5102C2.86936 16.7538 3.04022 16.962 3.25943 17.1085C3.47864 17.255 3.73637 17.3333 4.00004 17.3333ZM16 5.88531L24 13.8853V20L24.0014 26.6666H8.00004V13.8853L16 5.88531Z"
+        fill="#4346A2"
+      />
+      <path
+        d="M16 24C20.9374 24 22.5347 19.2814 22.6 19.0814L20.0667 18.2534C20.056 18.284 19.0254 21.3334 16 21.3334C13.016 21.3334 11.9734 18.372 11.932 18.2454L9.40002 19.0814C9.46536 19.2814 11.0627 24 16 24Z"
+        fill="#4346A2"
+      />
+    </svg>
+  );
+}
+
+function RefbookIcon() {
+  return (
+    <svg
+      width="32"
+      height="32"
+      viewBox="0 0 32 32"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path
+        d="M5.33325 26V5.99996C5.33325 5.1159 5.68444 4.26806 6.30956 3.64294C6.93468 3.01782 7.78253 2.66663 8.66659 2.66663H26.6666V29.3333H8.66659C7.78253 29.3333 6.93468 28.9821 6.30956 28.357C5.68444 27.7319 5.33325 26.884 5.33325 26ZM5.33325 26C5.33325 25.1159 5.68444 24.2681 6.30956 23.6429C6.93468 23.0178 7.78253 22.6666 8.66659 22.6666H26.6666M10.6666 17.3333L15.9999 7.99996L21.3333 17.3333M12.1334 14.6666H19.7334"
+        stroke="#047857"
+        stroke-width="2.9925"
+        stroke-linecap="round"
+        stroke-linejoin="round"
       />
     </svg>
   );
