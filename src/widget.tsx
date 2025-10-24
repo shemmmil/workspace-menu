@@ -115,6 +115,7 @@ const defaultFullApps: FullApp[] = [
       "Договоры, Контракты, Акты и накладные, Кадровый ЭДО, Контроль поручений",
     icon: <Newspaper className="w-8 h-8 text-orange-600" />,
     iconBg: "bg-orange-100",
+    url: "https://doc.sensata.kz/structure/index",
   },
   {
     id: "knowledge",
