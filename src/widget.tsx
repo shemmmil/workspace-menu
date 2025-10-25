@@ -111,8 +111,7 @@ const defaultFullApps: FullApp[] = [
   {
     id: "documentolog",
     title: "Электронный документооборот Documentolog",
-    description:
-      "Договоры, Контракты, Акты и накладные, Кадровый ЭДО, Контроль поручений",
+    description: "Служебные записки, Кадровый ЭДО, протокольные поручения",
     icon: <Newspaper className="w-8 h-8 text-orange-600" />,
     iconBg: "bg-orange-100",
     url: "https://doc.sensata.kz/structure/index",
@@ -130,7 +129,7 @@ const defaultFullApps: FullApp[] = [
     id: "manager",
     title: "Панель Руководителя. Сервис по планированию графиков",
     description:
-      "Контроль вех, еженедельные отчёты СМР, сводка по проектам, сервис планирования графиков СМР и ГПП",
+      "Паспорта проектов, универсальный сервис для планирования работ, контроль вех жизненного цикла проекта, графики СМР , отчеты по прогрессу строительства",
     icon: <BarChart3 className="w-8 h-8 text-lime-600" />,
     iconBg: "bg-lime-100",
     url: "https://isup.sensata.kz/",
@@ -148,7 +147,7 @@ const defaultFullApps: FullApp[] = [
     id: "bim360",
     title: "BIM360 (Инженерный документооборот)",
     description:
-      "Взаимодействие с проектировщиками, контроль готовности РП, координация техотдела и стройки.",
+      "Взаимодействия между проектными организациями, ГИПами, ПТО в части получения ЭП, РП. Возможность просмотра, создания замечаний/запросов на чертежах",
     icon: <FileCheck2 className="w-8 h-8 text-blue-600" />,
     iconBg: "bg-blue-100",
     url: "https://accounts.autodesk.com/logon?resume=%2Fas%2FrRFI1CMk89%2Fresume%2Fas%2Fauthorization.ping&spentity=null",
@@ -157,7 +156,7 @@ const defaultFullApps: FullApp[] = [
     id: "1c-estimate",
     title: "1С:Смета",
     description:
-      "Управление сметами, бюджетом переменных затрат и базой индикативных цен",
+      "Сметное производство, контроль бюджета переменных затрат проекта, база индикативных цен",
     icon: <OneCIcon />,
     iconBg: "bg-amber-100",
   },
@@ -165,7 +164,7 @@ const defaultFullApps: FullApp[] = [
     id: "macro-erp",
     title: "MacroERP",
     description:
-      "Сквозной учёт: сметные данные, договоры, поставки, оплаты и оперативная отчётность",
+      "Сервис для управления проектами в разрезе оперативного учета; Процессов «заявка на договор», «акты», «заказ и прием ТМЦ», «заявки на оплату»; Интегрирован с 1С Смета в части создания приложения договоров подряда, с Порталом партнеров для подписания с контрагентом договоров и актов через ЭЦП, с 1С Бухгалтерия в части проведение оплаты по акту или накладной",
     icon: <MacroERPIcon />,
     iconBg: "bg-pink-100",
     url: "https://macroerp.sensata.kz/",
@@ -173,8 +172,7 @@ const defaultFullApps: FullApp[] = [
   {
     id: "plan-radar",
     title: "Plan Radar",
-    description:
-      "Учёт дефектов по строительно-монтажным работам, мониторинг статуса и работа с документацией",
+    description: "Создания замечаний от служба контроля качества, БиОТ",
     icon: <PencilRuler className="w-8 h-8 text-rose-600" />,
     iconBg: "bg-rose-100",
     url: "https://www.planradar.com/login?redirect=https://www.planradar.com/dr/1287990?tab=projects",
@@ -215,7 +213,7 @@ const defaultFullApps: FullApp[] = [
   {
     id: "1c-hr",
     title: "1С: ЗУП",
-    description: "Бухгалтерский учет, налоги и финансы",
+    description: "Создания замечаний от служба контроля качества, БиОТ",
     icon: <OneCIcon />,
     iconBg: "bg-amber-100",
   },
@@ -408,7 +406,7 @@ export const Widget: React.FC<WidgetProps> = ({
         >
           <DialogHeader className="h-fit">
             <DialogTitle className="text-xl font-semibold">
-              Список всех доступных приложений
+              Список сервисов
             </DialogTitle>
           </DialogHeader>
           <div className="grid grid-cols-3 gap-4 mt-6">
