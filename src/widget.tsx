@@ -213,7 +213,7 @@ const defaultFullApps: FullApp[] = [
   {
     id: "1c-hr",
     title: "1С: ЗУП",
-    description: "Создания замечаний от служба контроля качества, БиОТ",
+    description: "Кадровый учет",
     icon: <OneCIcon />,
     iconBg: "bg-amber-100",
   },
@@ -387,7 +387,7 @@ export const Widget: React.FC<WidgetProps> = ({
               >
                 <div className="flex items-center gap-2">
                   <LayoutGrid className="w-4 h-4" />
-                  Все сервисы
+                  Список сервисов
                 </div>
                 <ChevronRight className="w-4 h-4 text-[#3F3F46]" />
               </DropdownMenuItem>
