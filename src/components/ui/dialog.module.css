@@ -1,0 +1,166 @@
+.overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 50;
+  background-color: rgba(0, 0, 0, 0.5);
+  animation: fadeIn 0.2s ease-out;
+}
+
+.overlay.closing {
+  animation: fadeOut 0.2s ease-out;
+}
+
+.content {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  z-index: 50;
+  display: grid;
+  width: 100%;
+  max-width: calc(100% - 2rem);
+  translate: -50% -50%;
+  gap: 1rem;
+  border-radius: 0.5rem;
+  border: 1px solid rgb(228, 228, 231);
+  background-color: white;
+  padding: 1.5rem;
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  animation: dialogSlideIn 0.2s ease-out;
+}
+
+.content.closing {
+  animation: dialogSlideOut 0.2s ease-out;
+}
+
+@media (min-width: 640px) {
+  .content {
+    max-width: 32rem;
+  }
+}
+
+.closeButton {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  border-radius: 0.25rem;
+  opacity: 0.7;
+  transition: opacity 0.15s ease-in-out;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 0.25rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.closeButton:hover {
+  opacity: 1;
+}
+
+.closeButton:focus {
+  outline: 2px solid rgb(156, 163, 175);
+  outline-offset: 2px;
+}
+
+.closeButton:disabled {
+  pointer-events: none;
+}
+
+.closeButton svg {
+  width: 1rem;
+  height: 1rem;
+  flex-shrink: 0;
+  pointer-events: none;
+}
+
+.header {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  text-align: center;
+}
+
+@media (min-width: 640px) {
+  .header {
+    text-align: left;
+  }
+}
+
+.footer {
+  display: flex;
+  flex-direction: column-reverse;
+  gap: 0.5rem;
+}
+
+@media (min-width: 640px) {
+  .footer {
+    flex-direction: row;
+    justify-content: flex-end;
+  }
+}
+
+.title {
+  font-size: 1.125rem;
+  line-height: 1;
+  font-weight: 600;
+}
+
+.description {
+  color: rgb(113, 113, 122);
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+}
+
+.srOnly {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeOut {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+
+@keyframes dialogSlideIn {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes dialogSlideOut {
+  from {
+    opacity: 1;
+    transform: scale(1);
+  }
+  to {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+}
+

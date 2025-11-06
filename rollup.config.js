@@ -30,24 +30,17 @@ export default {
       declarationDir: "dist",
     }),
     postcss({
-      config: {
-        path: "./postcss.config.cjs",
-      },
+      modules: true, // Enable CSS modules
       extensions: [".css"],
       minimize: true,
-      inject: true, // Автоматически инжектирует стили в <head>
-      extract: false, // Не извлекаем CSS в отдельный файл
+      inject: true, // Automatically inject styles in <head>
+      extract: false, // Don't extract CSS to separate file
+      autoModules: true, // Automatically enable CSS modules for files with .module.css
     }),
   ],
   external: [
     "react",
     "react-dom",
-    "lucide-react",
-    "@radix-ui/react-dialog",
-    "@radix-ui/react-dropdown-menu",
-    "@radix-ui/react-slot",
-    "class-variance-authority",
-    "clsx",
-    "tailwind-merge",
+    "react/jsx-runtime",
   ],
 };

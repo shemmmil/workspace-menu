@@ -1,0 +1,271 @@
+.dropdownMenu {
+  position: relative;
+  display: inline-block;
+}
+
+.trigger {
+  all: unset;
+  cursor: pointer;
+}
+
+.content {
+  position: absolute;
+  z-index: 50;
+  min-width: 8rem;
+  overflow-x: hidden;
+  overflow-y: auto;
+  border-radius: 0.375rem;
+  border: 1px solid rgb(228, 228, 231);
+  background-color: white;
+  padding: 0.25rem;
+  color: rgb(24, 24, 27);
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  animation: dropdownSlideIn 0.15s ease-out;
+}
+
+.content.closing {
+  animation: dropdownSlideOut 0.15s ease-out;
+}
+
+.content[data-side="bottom"] {
+  top: calc(100% + 4px);
+}
+
+.content[data-side="top"] {
+  bottom: calc(100% + 4px);
+}
+
+.content[data-side="right"] {
+  left: calc(100% + 4px);
+}
+
+.content[data-side="left"] {
+  right: calc(100% + 4px);
+}
+
+.content[data-align="start"] {
+  left: 0;
+}
+
+.content[data-align="end"] {
+  right: 0;
+}
+
+.content[data-align="center"] {
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.group {
+  /* Grouping for menu items */
+}
+
+.item {
+  position: relative;
+  display: flex;
+  cursor: pointer;
+  align-items: center;
+  gap: 0.5rem;
+  border-radius: 0.125rem;
+  padding: 0.375rem 0.5rem;
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+  outline: none;
+  user-select: none;
+  transition: background-color 0.15s ease-in-out;
+  background: transparent;
+  border: none;
+  width: 100%;
+  text-align: left;
+}
+
+.item:focus {
+  background-color: rgb(244, 244, 245);
+  color: rgb(24, 24, 27);
+}
+
+.item:hover:not(:disabled) {
+  background-color: rgb(244, 244, 245);
+  color: rgb(24, 24, 27);
+}
+
+.item:disabled {
+  pointer-events: none;
+  opacity: 0.5;
+}
+
+.item[data-variant="destructive"] {
+  color: rgb(239, 68, 68);
+}
+
+.item[data-variant="destructive"]:focus {
+  background-color: rgba(239, 68, 68, 0.1);
+}
+
+.item[data-variant="destructive"]:hover:not(:disabled) {
+  background-color: rgba(239, 68, 68, 0.1);
+  color: rgb(239, 68, 68);
+}
+
+.item[data-inset] {
+  padding-left: 2rem;
+}
+
+.item svg {
+  pointer-events: none;
+  flex-shrink: 0;
+  width: 1rem;
+  height: 1rem;
+  color: rgb(113, 113, 122);
+}
+
+.checkboxItem,
+.radioItem {
+  position: relative;
+  display: flex;
+  cursor: default;
+  align-items: center;
+  gap: 0.5rem;
+  border-radius: 0.125rem;
+  padding: 0.375rem 0.5rem 0.375rem 2rem;
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+  outline: none;
+  user-select: none;
+  transition: background-color 0.15s ease-in-out;
+}
+
+.checkboxItem:focus,
+.radioItem:focus {
+  background-color: rgb(244, 244, 245);
+  color: rgb(24, 24, 27);
+}
+
+.checkboxItem:disabled,
+.radioItem:disabled {
+  pointer-events: none;
+  opacity: 0.5;
+}
+
+.itemIndicator {
+  pointer-events: none;
+  position: absolute;
+  left: 0.5rem;
+  display: flex;
+  width: 0.875rem;
+  height: 0.875rem;
+  align-items: center;
+  justify-content: center;
+}
+
+.itemIndicator svg {
+  width: 1rem;
+  height: 1rem;
+}
+
+.label {
+  padding: 0.5rem 0.5rem 0.375rem;
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+  font-weight: 500;
+}
+
+.label[data-inset] {
+  padding-left: 2rem;
+}
+
+.separator {
+  margin: 0.25rem -0.25rem;
+  height: 1px;
+  background-color: rgb(228, 228, 231);
+}
+
+.shortcut {
+  margin-left: auto;
+  font-size: 0.75rem;
+  line-height: 1rem;
+  letter-spacing: 0.1em;
+  color: rgb(113, 113, 122);
+}
+
+.subMenu {
+  position: relative;
+}
+
+.subTrigger {
+  position: relative;
+  display: flex;
+  cursor: default;
+  align-items: center;
+  gap: 0.5rem;
+  border-radius: 0.125rem;
+  padding: 0.375rem 0.5rem;
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+  outline: none;
+  user-select: none;
+  transition: background-color 0.15s ease-in-out;
+}
+
+.subTrigger:focus {
+  background-color: rgb(244, 244, 245);
+  color: rgb(24, 24, 27);
+}
+
+.subTrigger[data-state="open"] {
+  background-color: rgb(244, 244, 245);
+  color: rgb(24, 24, 27);
+}
+
+.subTrigger[data-inset] {
+  padding-left: 2rem;
+}
+
+.subTrigger svg {
+  pointer-events: none;
+  flex-shrink: 0;
+  width: 1rem;
+  height: 1rem;
+  color: rgb(113, 113, 122);
+}
+
+.subContent {
+  position: absolute;
+  z-index: 50;
+  min-width: 8rem;
+  overflow: hidden;
+  border-radius: 0.375rem;
+  border: 1px solid rgb(228, 228, 231);
+  background-color: white;
+  padding: 0.25rem;
+  color: rgb(24, 24, 27);
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  animation: dropdownSlideIn 0.15s ease-out;
+}
+
+.subContent.closing {
+  animation: dropdownSlideOut 0.15s ease-out;
+}
+
+@keyframes dropdownSlideIn {
+  from {
+    opacity: 0;
+    transform: scale(0.95) translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+@keyframes dropdownSlideOut {
+  from {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+  to {
+    opacity: 0;
+    transform: scale(0.95) translateY(-10px);
+  }
+}
+

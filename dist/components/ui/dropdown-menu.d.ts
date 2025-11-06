@@ -1,26 +1,70 @@
-import * as React from "react";
-import * as DropdownMenuPrimitive from "@radix-ui/react-dropdown-menu";
-declare function DropdownMenu({ ...props }: React.ComponentProps<typeof DropdownMenuPrimitive.Root>): import("react/jsx-runtime").JSX.Element;
-declare function DropdownMenuPortal({ ...props }: React.ComponentProps<typeof DropdownMenuPrimitive.Portal>): import("react/jsx-runtime").JSX.Element;
-declare function DropdownMenuTrigger({ ...props }: React.ComponentProps<typeof DropdownMenuPrimitive.Trigger>): import("react/jsx-runtime").JSX.Element;
-declare function DropdownMenuContent({ className, sideOffset, ...props }: React.ComponentProps<typeof DropdownMenuPrimitive.Content>): import("react/jsx-runtime").JSX.Element;
-declare function DropdownMenuGroup({ ...props }: React.ComponentProps<typeof DropdownMenuPrimitive.Group>): import("react/jsx-runtime").JSX.Element;
-declare function DropdownMenuItem({ className, inset, variant, ...props }: React.ComponentProps<typeof DropdownMenuPrimitive.Item> & {
+import React from "react";
+export interface DropdownMenuProps {
+    children: React.ReactNode;
+}
+export declare const DropdownMenu: React.FC<DropdownMenuProps>;
+export interface DropdownMenuTriggerProps {
+    asChild?: boolean;
+    children: React.ReactElement;
+}
+export declare const DropdownMenuTrigger: React.FC<DropdownMenuTriggerProps>;
+export interface DropdownMenuPortalProps {
+    children: React.ReactNode;
+}
+export declare const DropdownMenuPortal: React.FC<DropdownMenuPortalProps>;
+export interface DropdownMenuContentProps extends React.HTMLAttributes<HTMLDivElement> {
+    align?: "start" | "center" | "end";
+    side?: "top" | "right" | "bottom" | "left";
+    sideOffset?: number;
+}
+export declare const DropdownMenuContent: React.ForwardRefExoticComponent<DropdownMenuContentProps & React.RefAttributes<HTMLDivElement>>;
+export interface DropdownMenuGroupProps extends React.HTMLAttributes<HTMLDivElement> {
+}
+export declare const DropdownMenuGroup: React.ForwardRefExoticComponent<DropdownMenuGroupProps & React.RefAttributes<HTMLDivElement>>;
+export interface DropdownMenuItemProps extends React.HTMLAttributes<HTMLDivElement> {
     inset?: boolean;
     variant?: "default" | "destructive";
-}): import("react/jsx-runtime").JSX.Element;
-declare function DropdownMenuCheckboxItem({ className, children, checked, ...props }: React.ComponentProps<typeof DropdownMenuPrimitive.CheckboxItem>): import("react/jsx-runtime").JSX.Element;
-declare function DropdownMenuRadioGroup({ ...props }: React.ComponentProps<typeof DropdownMenuPrimitive.RadioGroup>): import("react/jsx-runtime").JSX.Element;
-declare function DropdownMenuRadioItem({ className, children, ...props }: React.ComponentProps<typeof DropdownMenuPrimitive.RadioItem>): import("react/jsx-runtime").JSX.Element;
-declare function DropdownMenuLabel({ className, inset, ...props }: React.ComponentProps<typeof DropdownMenuPrimitive.Label> & {
+    disabled?: boolean;
+}
+export declare const DropdownMenuItem: React.ForwardRefExoticComponent<DropdownMenuItemProps & React.RefAttributes<HTMLDivElement>>;
+export interface DropdownMenuCheckboxItemProps extends React.HTMLAttributes<HTMLDivElement> {
+    checked?: boolean;
+    onCheckedChange?: (checked: boolean) => void;
+}
+export declare const DropdownMenuCheckboxItem: React.ForwardRefExoticComponent<DropdownMenuCheckboxItemProps & React.RefAttributes<HTMLDivElement>>;
+export interface DropdownMenuRadioGroupProps extends React.HTMLAttributes<HTMLDivElement> {
+    value?: string;
+    onValueChange?: (value: string) => void;
+}
+export declare const DropdownMenuRadioGroup: React.ForwardRefExoticComponent<DropdownMenuRadioGroupProps & React.RefAttributes<HTMLDivElement>>;
+export interface DropdownMenuRadioItemProps extends React.HTMLAttributes<HTMLDivElement> {
+    value: string;
+    checked?: boolean;
+    onValueChange?: (value: string) => void;
+}
+export declare const DropdownMenuRadioItem: React.ForwardRefExoticComponent<DropdownMenuRadioItemProps & React.RefAttributes<HTMLDivElement>>;
+export interface DropdownMenuLabelProps extends React.HTMLAttributes<HTMLDivElement> {
     inset?: boolean;
-}): import("react/jsx-runtime").JSX.Element;
-declare function DropdownMenuSeparator({ className, ...props }: React.ComponentProps<typeof DropdownMenuPrimitive.Separator>): import("react/jsx-runtime").JSX.Element;
-declare function DropdownMenuShortcut({ className, ...props }: React.ComponentProps<"span">): import("react/jsx-runtime").JSX.Element;
-declare function DropdownMenuSub({ ...props }: React.ComponentProps<typeof DropdownMenuPrimitive.Sub>): import("react/jsx-runtime").JSX.Element;
-declare function DropdownMenuSubTrigger({ className, inset, children, ...props }: React.ComponentProps<typeof DropdownMenuPrimitive.SubTrigger> & {
+}
+export declare const DropdownMenuLabel: React.ForwardRefExoticComponent<DropdownMenuLabelProps & React.RefAttributes<HTMLDivElement>>;
+export interface DropdownMenuSeparatorProps extends React.HTMLAttributes<HTMLDivElement> {
+}
+export declare const DropdownMenuSeparator: React.ForwardRefExoticComponent<DropdownMenuSeparatorProps & React.RefAttributes<HTMLDivElement>>;
+export interface DropdownMenuShortcutProps extends React.HTMLAttributes<HTMLSpanElement> {
+}
+export declare const DropdownMenuShortcut: React.ForwardRefExoticComponent<DropdownMenuShortcutProps & React.RefAttributes<HTMLSpanElement>>;
+export interface DropdownMenuSubProps {
+    children: React.ReactNode;
+}
+export declare const DropdownMenuSub: React.FC<DropdownMenuSubProps>;
+export interface DropdownMenuSubTriggerProps extends React.HTMLAttributes<HTMLDivElement> {
     inset?: boolean;
-}): import("react/jsx-runtime").JSX.Element;
-declare function DropdownMenuSubContent({ className, ...props }: React.ComponentProps<typeof DropdownMenuPrimitive.SubContent>): import("react/jsx-runtime").JSX.Element;
-export { DropdownMenu, DropdownMenuPortal, DropdownMenuTrigger, DropdownMenuContent, DropdownMenuGroup, DropdownMenuLabel, DropdownMenuItem, DropdownMenuCheckboxItem, DropdownMenuRadioGroup, DropdownMenuRadioItem, DropdownMenuSeparator, DropdownMenuShortcut, DropdownMenuSub, DropdownMenuSubTrigger, DropdownMenuSubContent, };
+    open?: boolean;
+    onOpenChange?: (open: boolean) => void;
+}
+export declare const DropdownMenuSubTrigger: React.ForwardRefExoticComponent<DropdownMenuSubTriggerProps & React.RefAttributes<HTMLDivElement>>;
+export interface DropdownMenuSubContentProps extends React.HTMLAttributes<HTMLDivElement> {
+    open?: boolean;
+}
+export declare const DropdownMenuSubContent: React.ForwardRefExoticComponent<DropdownMenuSubContentProps & React.RefAttributes<HTMLDivElement>>;
 //# sourceMappingURL=dropdown-menu.d.ts.map
