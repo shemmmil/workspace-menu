@@ -9,7 +9,7 @@ export declare const ChevronsUpDown: React.FC<IconProps>;
 export declare const HandMetal: React.FC<IconProps>;
 export declare const Headphones: React.FC<IconProps>;
 export declare const LayoutGrid: React.FC<IconProps>;
-export declare const ExternalLink: React.FC<IconProps>;
+export declare const InfoIcon: React.FC<IconProps>;
 export declare const Mail: React.FC<IconProps>;
 export declare const Newspaper: React.FC<IconProps>;
 export declare const FileCheck2: React.FC<IconProps>;

@@ -92,7 +92,6 @@ export {
   HandMetal,
   Headphones,
   LayoutGrid,
-  ExternalLink,
   Mail,
   Newspaper,
   FileCheck2,

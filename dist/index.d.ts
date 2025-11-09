@@ -8,6 +8,6 @@ export { DropdownMenu, DropdownMenuContent, DropdownMenuGroup, DropdownMenuItem,
 export type { DropdownMenuProps, DropdownMenuContentProps, DropdownMenuGroupProps, DropdownMenuItemProps, DropdownMenuTriggerProps, DropdownMenuCheckboxItemProps, DropdownMenuRadioGroupProps, DropdownMenuRadioItemProps, DropdownMenuLabelProps, DropdownMenuSeparatorProps, DropdownMenuShortcutProps, DropdownMenuSubProps, DropdownMenuSubTriggerProps, DropdownMenuSubContentProps, DropdownMenuPortalProps, } from "./components/ui/dropdown-menu";
 export { Card, CardHeader, CardFooter, CardTitle, CardAction, CardDescription, CardContent, } from "./components/ui/card";
 export type { CardProps, CardHeaderProps, CardFooterProps, CardTitleProps, CardActionProps, CardDescriptionProps, CardContentProps, } from "./components/ui/card";
-export { BarChart3, Brain, ChevronRight, ChevronsUpDown, HandMetal, Headphones, LayoutGrid, ExternalLink, Mail, Newspaper, FileCheck2, PencilRuler, Handshake, BookOpen, HeadsetIcon, XIcon, OneCIcon, MacroERPIcon, SensataServicesIcon, RefbookIcon, } from "./components/icons";
+export { BarChart3, Brain, ChevronRight, ChevronsUpDown, HandMetal, Headphones, LayoutGrid, Mail, Newspaper, FileCheck2, PencilRuler, Handshake, BookOpen, HeadsetIcon, XIcon, OneCIcon, MacroERPIcon, SensataServicesIcon, RefbookIcon, } from "./components/icons";
 export type { IconProps } from "./components/icons";
 //# sourceMappingURL=index.d.ts.map

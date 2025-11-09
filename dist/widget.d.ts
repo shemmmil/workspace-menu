@@ -13,6 +13,7 @@ export interface FullApp {
     icon: React.ReactNode;
     url?: string;
     iconBg?: string;
+    info?: string;
 }
 export interface WidgetProps {
     currentApp?: AppId;
