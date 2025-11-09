@@ -46,10 +46,6 @@
   justify-self: end;
 }
 
-.cardContent {
-  padding: 0 1.5rem;
-}
-
 .cardFooter {
   display: flex;
   align-items: center;

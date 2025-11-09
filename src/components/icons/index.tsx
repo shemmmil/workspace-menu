@@ -22,6 +22,42 @@ export const BarChart3: React.FC<IconProps> = ({ className, ...props }) => (
   </svg>
 );
 
+export const BarChart4: React.FC<IconProps> = ({ className, ...props }) => (
+  <svg
+    width="32"
+    height="32"
+    viewBox="0 0 32 32"
+    fill="none"
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <path
+      d="M4 4V28H28M9.33333 16V22.6667H25.3333V10.6667L18.6667 17.3333L13.3333 12L9.33333 16Z"
+      stroke="#65A30D"
+      stroke-width="2.9925"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+    />
+  </svg>
+);
+
+export const BarChart5: React.FC<IconProps> = ({ className, ...props }) => (
+  <svg
+    width="32"
+    height="32"
+    viewBox="0 0 32 32"
+    fill="none"
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <path
+      d="M4 4V28H28M9.33333 16V22.6667H25.3333V10.6667L18.6667 17.3333L13.3333 12L9.33333 16Z"
+      stroke="#4F46E5"
+      stroke-width="2.9925"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+    />
+  </svg>
+);
+
 export const Brain: React.FC<IconProps> = ({ className, ...props }) => (
   <svg
     width="16"

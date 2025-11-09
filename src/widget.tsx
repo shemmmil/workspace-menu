@@ -33,6 +33,8 @@ import {
   SensataServicesIcon,
   RefbookIcon,
   InfoIcon,
+  BarChart4,
+  BarChart5,
 } from "./components/icons";
 import styles from "./widget.module.css";
 
@@ -127,7 +129,7 @@ const defaultFullApps: FullApp[] = [
     title: "База знаний",
     description:
       "Корпоративные стандарты, Регламенты, Шаблоны документов, Руководства и мануалы",
-    icon: <BarChart3 className={styles.iconIndigoLarge} />,
+    icon: <BarChart5 className={styles.iconIndigoLarge} />,
     iconBg: styles.bgIndigo,
     url: "https://wiki.sensata.kz/",
   },
@@ -136,7 +138,7 @@ const defaultFullApps: FullApp[] = [
     title: "Панель Руководителя. Сервис по планированию графиков",
     description:
       "Паспорта проектов, универсальный сервис для планирования работ, контроль вех жизненного цикла проекта, графики СМР , отчеты по прогрессу строительства",
-    icon: <BarChart3 className={styles.iconLimeLarge} />,
+    icon: <BarChart4 className={styles.iconLimeLarge} />,
     iconBg: styles.bgLime,
     url: "https://isup.sensata.kz/",
   },
