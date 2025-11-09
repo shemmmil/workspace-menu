@@ -22,7 +22,6 @@ import {
   HandMetal,
   Headphones,
   LayoutGrid,
-  ExternalLink,
   Mail,
   Newspaper,
   FileCheck2,
@@ -33,6 +32,7 @@ import {
   MacroERPIcon,
   SensataServicesIcon,
   RefbookIcon,
+  InfoIcon,
 } from "./components/icons";
 import styles from "./widget.module.css";
 
@@ -63,6 +63,7 @@ export interface FullApp {
   icon: React.ReactNode;
   url?: string;
   iconBg?: string;
+  info?: string;
 }
 
 export interface WidgetProps {
@@ -111,6 +112,7 @@ const defaultFullApps: FullApp[] = [
     icon: <Mail className={styles.iconBlueLarge} />,
     iconBg: styles.bgBlue,
     url: "https://mail.sensata.kz/",
+    info: "Link",
   },
   {
     id: "documentolog",
@@ -171,7 +173,7 @@ const defaultFullApps: FullApp[] = [
       "Сервис для управления проектами в разрезе оперативного учета; Процессов «заявка на договор», «акты», «заказ и прием ТМЦ», «заявки на оплату»; Интегрирован с 1С Смета в части создания приложения договоров подряда, с Порталом партнеров для подписания с контрагентом договоров и актов через ЭЦП, с 1С Бухгалтерия в части проведение оплаты по акту или накладной",
     icon: <MacroERPIcon />,
     iconBg: styles.bgPink,
-    url: "https://macroerp.sensata.kz/",
+    url: "https://macroserver.kz/",
   },
   {
     id: "plan-radar",
@@ -318,23 +320,25 @@ export const Widget: React.FC<WidgetProps> = ({
                   className={app.url ? styles.cardClickable : ""}
                   onClick={() => app.url && handleFullAppClick(app)}
                 >
-                  <CardContent className={styles.cardContent}>
+                  <CardContent
+                    className={styles.cardContent}
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      handleFullAppClick(app);
+                    }}
+                  >
                     <div className={styles.cardHeader}>
                       <div className={styles.iconWrapper}>
                         <div className={styles.iconContainer}>{app.icon}</div>
                         <div className={`${styles.iconBg} ${app.iconBg}`} />
                       </div>
-                      {app.url && (
+                      {app?.info && (
                         <Button
                           variant="ghost"
                           size="icon"
                           className={styles.externalLinkButton}
-                          onClick={(e) => {
-                            e.stopPropagation();
-                            handleFullAppClick(app);
-                          }}
                         >
-                          <ExternalLink className={styles.iconSmall} />
+                          <InfoIcon className={styles.iconSmall} />
                         </Button>
                       )}
                     </div>

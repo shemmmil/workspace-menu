@@ -137,6 +137,7 @@ export const DropdownMenuContent = React.forwardRef<
     const [position, setPosition] = useState<{
       top: number;
       left: number;
+      width: number;
     } | null>(null);
 
     const handleClose = useCallback(() => {
@@ -189,7 +190,7 @@ export const DropdownMenuContent = React.forwardRef<
           top = viewportHeight - contentRect.height - 8;
         }
 
-        setPosition({ top, left });
+        setPosition({ top, left, width: triggerRect.width });
       }
     }, [context, align, side, sideOffset]);
 
@@ -254,6 +255,7 @@ export const DropdownMenuContent = React.forwardRef<
                   position: "fixed",
                   top: `${position.top}px`,
                   left: `${position.left}px`,
+                  width: `${position.width}px`,
                 }
               : { visibility: "hidden" }
           }
