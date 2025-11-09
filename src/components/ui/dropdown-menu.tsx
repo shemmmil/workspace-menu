@@ -150,49 +150,82 @@ export const DropdownMenuContent = React.forwardRef<
 
     const updatePosition = useCallback(() => {
       const trigger = context?.triggerRef.current;
-      if (trigger && contentRef.current) {
-        const triggerRect = trigger.getBoundingClientRect();
-        const contentRect = contentRef.current.getBoundingClientRect();
-        const viewportWidth = window.innerWidth;
-        const viewportHeight = window.innerHeight;
+      if (!trigger || !contentRef.current) return;
 
-        let top = triggerRect.bottom + sideOffset;
-        let left = triggerRect.left;
+      const triggerRect = trigger.getBoundingClientRect();
+      const viewportWidth = window.innerWidth;
+      const viewportHeight = window.innerHeight;
 
-        // Adjust for side
-        if (side === "top") {
-          top = triggerRect.top - contentRect.height - sideOffset;
-        } else if (side === "right") {
-          top = triggerRect.top;
-          left = triggerRect.right + sideOffset;
-        } else if (side === "left") {
-          top = triggerRect.top;
-          left = triggerRect.left - contentRect.width - sideOffset;
-        }
+      // Ensure content is visible for measurement
+      const currentStyle = contentRef.current.style;
+      const originalVisibility = currentStyle.visibility;
+      const originalPosition = currentStyle.position;
+      const originalTop = currentStyle.top;
+      const originalLeft = currentStyle.left;
 
-        // Adjust for align
-        if (align === "end") {
-          left = triggerRect.right - contentRect.width;
-        } else if (align === "center") {
-          left = triggerRect.left + (triggerRect.width - contentRect.width) / 2;
-        }
-
-        // Keep within viewport bounds
-        if (left < 0) {
-          left = 8;
-        } else if (left + contentRect.width > viewportWidth) {
-          left = viewportWidth - contentRect.width - 8;
-        }
-
-        if (top < 0) {
-          top = 8;
-        } else if (top + contentRect.height > viewportHeight) {
-          top = viewportHeight - contentRect.height - 8;
-        }
-
-        setPosition({ top, left, width: triggerRect.width });
+      // Temporarily position off-screen to measure
+      if (originalVisibility === "hidden" || !position) {
+        currentStyle.visibility = "visible";
+        currentStyle.position = "fixed";
+        currentStyle.top = "-9999px";
+        currentStyle.left = "-9999px";
       }
+
+      // Force reflow to ensure dimensions are calculated
+      void contentRef.current.offsetHeight;
+
+      const contentRect = contentRef.current.getBoundingClientRect();
+
+      let top = triggerRect.bottom + sideOffset;
+      let left = triggerRect.left;
+
+      // Adjust for side
+      if (side === "top") {
+        top = triggerRect.top - contentRect.height - sideOffset;
+      } else if (side === "right") {
+        top = triggerRect.top;
+        left = triggerRect.right + sideOffset;
+      } else if (side === "left") {
+        top = triggerRect.top;
+        left = triggerRect.left - contentRect.width - sideOffset;
+      }
+
+      // Adjust for align
+      if (align === "end") {
+        left = triggerRect.right - contentRect.width;
+      } else if (align === "center") {
+        left = triggerRect.left + (triggerRect.width - contentRect.width) / 2;
+      }
+
+      // Keep within viewport bounds
+      if (left < 0) {
+        left = 8;
+      } else if (left + contentRect.width > viewportWidth) {
+        left = viewportWidth - contentRect.width - 8;
+      }
+
+      if (top < 0) {
+        top = 8;
+      } else if (top + contentRect.height > viewportHeight) {
+        top = viewportHeight - contentRect.height - 8;
+      }
+
+      setPosition({ top, left, width: triggerRect.width });
     }, [context, align, side, sideOffset]);
+
+    // Callback ref to calculate position when element is mounted
+    const setContentRef = useCallback(
+      (node: HTMLDivElement | null) => {
+        contentRef.current = node;
+        if (node && context?.open) {
+          // Calculate position immediately when element is mounted
+          requestAnimationFrame(() => {
+            updatePosition();
+          });
+        }
+      },
+      [context?.open, updatePosition]
+    );
 
     useEffect(() => {
       const handleClickOutside = (e: MouseEvent) => {
@@ -214,11 +247,6 @@ export const DropdownMenuContent = React.forwardRef<
       };
 
       if (context?.open) {
-        // Initial position calculation after render
-        requestAnimationFrame(() => {
-          updatePosition();
-        });
-
         // Update position on scroll and resize
         const handleScroll = () => updatePosition();
         const handleResize = () => updatePosition();
@@ -234,6 +262,9 @@ export const DropdownMenuContent = React.forwardRef<
           document.removeEventListener("mousedown", handleClickOutside);
           document.removeEventListener("keydown", handleEscape);
         };
+      } else {
+        // Reset position when closed
+        setPosition(null);
       }
     }, [context?.open, handleClose, updatePosition]);
 
@@ -242,7 +273,7 @@ export const DropdownMenuContent = React.forwardRef<
     return (
       <DropdownMenuPortal>
         <div
-          ref={contentRef}
+          ref={setContentRef}
           data-slot="dropdown-menu-content"
           data-side={side}
           data-align={align}
@@ -256,8 +287,9 @@ export const DropdownMenuContent = React.forwardRef<
                   top: `${position.top}px`,
                   left: `${position.left}px`,
                   width: `${position.width}px`,
+                  visibility: "visible",
                 }
-              : { visibility: "hidden" }
+              : { visibility: "hidden", position: "fixed", top: "-9999px", left: "-9999px" }
           }
           {...props}
         >
