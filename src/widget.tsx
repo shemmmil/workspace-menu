@@ -353,7 +353,9 @@ export const Widget: React.FC<WidgetProps> = ({
                     <h3 className={styles.appTitle}>{app.title}</h3>
                     <p
                       className={styles.appDescription}
-                      title={app.description}
+                      title={
+                        app.id === "macro-erp" ? app.description : undefined
+                      }
                     >
                       {app.id === "macro-erp"
                         ? (() => {
