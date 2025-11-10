@@ -216,6 +216,7 @@ export const DropdownMenuContent = React.forwardRef<
     // Callback ref to calculate position when element is mounted
     const setContentRef = useCallback(
       (node: HTMLDivElement | null) => {
+        // @ts-ignore
         contentRef.current = node;
         if (node && context?.open) {
           // Calculate position immediately when element is mounted
@@ -289,7 +290,12 @@ export const DropdownMenuContent = React.forwardRef<
                   width: `${position.width}px`,
                   visibility: "visible",
                 }
-              : { visibility: "hidden", position: "fixed", top: "-9999px", left: "-9999px" }
+              : {
+                  visibility: "hidden",
+                  position: "fixed",
+                  top: "-9999px",
+                  left: "-9999px",
+                }
           }
           {...props}
         >

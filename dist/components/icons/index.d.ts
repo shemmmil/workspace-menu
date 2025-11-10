@@ -3,6 +3,8 @@ export interface IconProps extends React.SVGProps<SVGSVGElement> {
     className?: string;
 }
 export declare const BarChart3: React.FC<IconProps>;
+export declare const BarChart4: React.FC<IconProps>;
+export declare const BarChart5: React.FC<IconProps>;
 export declare const Brain: React.FC<IconProps>;
 export declare const ChevronRight: React.FC<IconProps>;
 export declare const ChevronsUpDown: React.FC<IconProps>;

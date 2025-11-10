@@ -48,6 +48,8 @@ const Button = React.forwardRef(({ className = "", variant = "default", size = "
 Button.displayName = "Button";
 
 const BarChart3 = ({ className, ...props }) => (jsx("svg", { width: "16", height: "16", viewBox: "0 0 16 16", fill: "none", xmlns: "http://www.w3.org/2000/svg", children: jsx("path", { d: "M2 2V14H14M4.66667 8V11.3333H12.6667V5.33333L9.33333 8.66667L6.66667 6L4.66667 8Z", stroke: "#65A30D", "stroke-width": "2", "stroke-linecap": "round", "stroke-linejoin": "round" }) }));
+const BarChart4 = ({ className, ...props }) => (jsx("svg", { width: "32", height: "32", viewBox: "0 0 32 32", fill: "none", xmlns: "http://www.w3.org/2000/svg", children: jsx("path", { d: "M4 4V28H28M9.33333 16V22.6667H25.3333V10.6667L18.6667 17.3333L13.3333 12L9.33333 16Z", stroke: "#65A30D", "stroke-width": "2.9925", "stroke-linecap": "round", "stroke-linejoin": "round" }) }));
+const BarChart5 = ({ className, ...props }) => (jsx("svg", { width: "32", height: "32", viewBox: "0 0 32 32", fill: "none", xmlns: "http://www.w3.org/2000/svg", children: jsx("path", { d: "M4 4V28H28M9.33333 16V22.6667H25.3333V10.6667L18.6667 17.3333L13.3333 12L9.33333 16Z", stroke: "#4F46E5", "stroke-width": "2.9925", "stroke-linecap": "round", "stroke-linejoin": "round" }) }));
 const Brain = ({ className, ...props }) => (jsxs("svg", { width: "16", height: "16", viewBox: "0 0 16 16", fill: "none", xmlns: "http://www.w3.org/2000/svg", children: [jsx("g", { "clip-path": "url(#clip0_2981_16446)", children: jsx("path", { d: "M8.00021 3.33353C8.001 3.06688 7.94845 2.80277 7.84567 2.55673C7.74289 2.31069 7.59195 2.08768 7.40172 1.90083C7.2115 1.71397 6.98583 1.56704 6.73798 1.46868C6.49014 1.37032 6.22513 1.32251 5.95854 1.32807C5.69195 1.33363 5.42917 1.39244 5.18564 1.50104C4.94211 1.60964 4.72276 1.76585 4.54048 1.96047C4.3582 2.15508 4.21668 2.38419 4.12425 2.6343C4.03181 2.88441 3.99032 3.15048 4.00221 3.41686M8.00021 3.33353V12.0002M8.00021 3.33353C7.99943 3.06688 8.05209 2.80277 8.15487 2.55673C8.25765 2.31069 8.40859 2.08768 8.59882 1.90083C8.78905 1.71397 9.01472 1.56704 9.26256 1.46868C9.5104 1.37032 9.77541 1.32251 10.042 1.32807C10.3086 1.33363 10.5714 1.39244 10.8149 1.50104C11.0584 1.60964 11.2778 1.76585 11.4601 1.96047C11.6423 2.15508 11.7839 2.38419 11.8763 2.6343C11.9687 2.88441 12.0102 3.15048 11.9983 3.41686C12.3902 3.51762 12.754 3.70623 13.0622 3.9684C13.3704 4.23058 13.6148 4.55945 13.7771 4.9301C13.9394 5.30075 14.0152 5.70346 13.9987 6.10774C13.9823 6.51202 13.8741 6.90726 13.6823 7.26353M4.00221 3.41686C3.61035 3.51762 3.24655 3.70623 2.93837 3.9684C2.63019 4.23058 2.38571 4.55945 2.22344 4.9301C2.06118 5.30075 1.98539 5.70346 2.0018 6.10774C2.01822 6.51202 2.12643 6.90726 2.31821 7.26353M4.00221 3.41686C4.0154 3.73935 4.1065 4.05383 4.26761 4.3335M2.31821 7.26353C1.981 7.53748 1.71583 7.88968 1.54577 8.28949C1.37571 8.68929 1.30592 9.12459 1.34245 9.55752C1.37899 9.99045 1.52076 10.4079 1.75542 10.7735C1.99008 11.1392 2.31052 11.442 2.68888 11.6555M2.31821 7.26353C2.44017 7.1642 2.57083 7.07649 2.70836 7.00016M2.68888 11.6555C2.64216 12.017 2.67004 12.3843 2.7708 12.7345C2.87157 13.0848 3.04308 13.4108 3.27474 13.6922C3.50639 13.9736 3.79329 14.2045 4.11769 14.3707C4.4421 14.5369 4.79713 14.6348 5.16086 14.6584C5.5246 14.682 5.88931 14.6308 6.23247 14.5079C6.57563 14.3851 6.88997 14.1931 7.15605 13.944C7.42214 13.6949 7.63433 13.3939 7.77952 13.0596C7.92471 12.7252 7.99982 12.3647 8.00021 12.0002M2.68888 11.6555C3.08906 11.8812 3.54101 12.0003 4.00046 12.0001M8.00021 12.0002C8.0006 12.3647 8.07583 12.7252 8.22103 13.0596C8.36622 13.3939 8.57841 13.6949 8.84449 13.944C9.11058 14.1931 9.42491 14.3851 9.76808 14.5079C10.1112 14.6308 10.476 14.682 10.8397 14.6584C11.2034 14.6348 11.5584 14.5369 11.8829 14.3707C12.2073 14.2045 12.4942 13.9736 12.7258 13.6922C12.9575 13.4108 13.129 13.0848 13.2297 12.7345C13.3305 12.3843 13.3584 12.017 13.3117 11.6555M13.6823 7.26353C14.0195 7.53748 14.2847 7.88968 14.4548 8.28949C14.6248 8.68929 14.6946 9.12459 14.6581 9.55752C14.6216 9.99045 14.4798 10.4079 14.2451 10.7735C14.0105 11.1392 13.69 11.442 13.3117 11.6555M13.6823 7.26353C13.5604 7.1642 13.4298 7.07649 13.2923 7.00016M13.3117 11.6555C12.9115 11.8812 12.4598 12.0003 12.0003 12.0001M10.0003 8.66683C9.44062 8.46993 8.95187 8.11149 8.59588 7.63683C8.23988 7.16217 8.03263 6.59261 8.00033 6.00016C7.96802 6.59261 7.76077 7.16217 7.40477 7.63683C7.04878 8.11149 6.56003 8.46993 6.00033 8.66683M11.7331 4.3335C11.8944 4.05389 11.9857 3.73937 11.9991 3.41683", stroke: "#4F46E5", "stroke-width": "2", "stroke-linecap": "round", "stroke-linejoin": "round" }) }), jsx("defs", { children: jsx("clipPath", { id: "clip0_2981_16446", children: jsx("rect", { width: "16", height: "16", fill: "white" }) }) })] }));
 const ChevronRight = ({ className, ...props }) => (jsx("svg", { width: "16", height: "16", viewBox: "0 0 24 24", fill: "none", stroke: "currentColor", strokeWidth: "2", strokeLinecap: "round", strokeLinejoin: "round", className: className, ...props, children: jsx("path", { d: "m9 18 6-6-6-6" }) }));
 const ChevronsUpDown = ({ className, ...props }) => (jsxs("svg", { width: "16", height: "16", viewBox: "0 0 24 24", fill: "none", stroke: "currentColor", strokeWidth: "2", strokeLinecap: "round", strokeLinejoin: "round", className: className, ...props, children: [jsx("path", { d: "m7 15 5 5 5-5" }), jsx("path", { d: "m7 9 5-5 5 5" })] }));
@@ -136,48 +138,74 @@ const DropdownMenuContent = React.forwardRef(({ className = "", children, align 
     }, [context]);
     const updatePosition = useCallback(() => {
         const trigger = context?.triggerRef.current;
-        if (trigger && contentRef.current) {
-            const triggerRect = trigger.getBoundingClientRect();
-            const contentRect = contentRef.current.getBoundingClientRect();
-            const viewportWidth = window.innerWidth;
-            const viewportHeight = window.innerHeight;
-            let top = triggerRect.bottom + sideOffset;
-            let left = triggerRect.left;
-            // Adjust for side
-            if (side === "top") {
-                top = triggerRect.top - contentRect.height - sideOffset;
-            }
-            else if (side === "right") {
-                top = triggerRect.top;
-                left = triggerRect.right + sideOffset;
-            }
-            else if (side === "left") {
-                top = triggerRect.top;
-                left = triggerRect.left - contentRect.width - sideOffset;
-            }
-            // Adjust for align
-            if (align === "end") {
-                left = triggerRect.right - contentRect.width;
-            }
-            else if (align === "center") {
-                left = triggerRect.left + (triggerRect.width - contentRect.width) / 2;
-            }
-            // Keep within viewport bounds
-            if (left < 0) {
-                left = 8;
-            }
-            else if (left + contentRect.width > viewportWidth) {
-                left = viewportWidth - contentRect.width - 8;
-            }
-            if (top < 0) {
-                top = 8;
-            }
-            else if (top + contentRect.height > viewportHeight) {
-                top = viewportHeight - contentRect.height - 8;
-            }
-            setPosition({ top, left, width: triggerRect.width });
+        if (!trigger || !contentRef.current)
+            return;
+        const triggerRect = trigger.getBoundingClientRect();
+        const viewportWidth = window.innerWidth;
+        const viewportHeight = window.innerHeight;
+        // Ensure content is visible for measurement
+        const currentStyle = contentRef.current.style;
+        const originalVisibility = currentStyle.visibility;
+        currentStyle.position;
+        currentStyle.top;
+        currentStyle.left;
+        // Temporarily position off-screen to measure
+        if (originalVisibility === "hidden" || !position) {
+            currentStyle.visibility = "visible";
+            currentStyle.position = "fixed";
+            currentStyle.top = "-9999px";
+            currentStyle.left = "-9999px";
         }
+        // Force reflow to ensure dimensions are calculated
+        void contentRef.current.offsetHeight;
+        const contentRect = contentRef.current.getBoundingClientRect();
+        let top = triggerRect.bottom + sideOffset;
+        let left = triggerRect.left;
+        // Adjust for side
+        if (side === "top") {
+            top = triggerRect.top - contentRect.height - sideOffset;
+        }
+        else if (side === "right") {
+            top = triggerRect.top;
+            left = triggerRect.right + sideOffset;
+        }
+        else if (side === "left") {
+            top = triggerRect.top;
+            left = triggerRect.left - contentRect.width - sideOffset;
+        }
+        // Adjust for align
+        if (align === "end") {
+            left = triggerRect.right - contentRect.width;
+        }
+        else if (align === "center") {
+            left = triggerRect.left + (triggerRect.width - contentRect.width) / 2;
+        }
+        // Keep within viewport bounds
+        if (left < 0) {
+            left = 8;
+        }
+        else if (left + contentRect.width > viewportWidth) {
+            left = viewportWidth - contentRect.width - 8;
+        }
+        if (top < 0) {
+            top = 8;
+        }
+        else if (top + contentRect.height > viewportHeight) {
+            top = viewportHeight - contentRect.height - 8;
+        }
+        setPosition({ top, left, width: triggerRect.width });
     }, [context, align, side, sideOffset]);
+    // Callback ref to calculate position when element is mounted
+    const setContentRef = useCallback((node) => {
+        // @ts-ignore
+        contentRef.current = node;
+        if (node && context?.open) {
+            // Calculate position immediately when element is mounted
+            requestAnimationFrame(() => {
+                updatePosition();
+            });
+        }
+    }, [context?.open, updatePosition]);
     useEffect(() => {
         const handleClickOutside = (e) => {
             if (contentRef.current &&
@@ -194,10 +222,6 @@ const DropdownMenuContent = React.forwardRef(({ className = "", children, align 
             }
         };
         if (context?.open) {
-            // Initial position calculation after render
-            requestAnimationFrame(() => {
-                updatePosition();
-            });
             // Update position on scroll and resize
             const handleScroll = () => updatePosition();
             const handleResize = () => updatePosition();
@@ -212,17 +236,27 @@ const DropdownMenuContent = React.forwardRef(({ className = "", children, align 
                 document.removeEventListener("keydown", handleEscape);
             };
         }
+        else {
+            // Reset position when closed
+            setPosition(null);
+        }
     }, [context?.open, handleClose, updatePosition]);
     if (!context?.open)
         return null;
-    return (jsx(DropdownMenuPortal, { children: jsx("div", { ref: contentRef, "data-slot": "dropdown-menu-content", "data-side": side, "data-align": align, className: `${styles$3.content} ${closing ? styles$3.closing : ""} ${className}`, style: position
+    return (jsx(DropdownMenuPortal, { children: jsx("div", { ref: setContentRef, "data-slot": "dropdown-menu-content", "data-side": side, "data-align": align, className: `${styles$3.content} ${closing ? styles$3.closing : ""} ${className}`, style: position
                 ? {
                     position: "fixed",
                     top: `${position.top}px`,
                     left: `${position.left}px`,
                     width: `${position.width}px`,
+                    visibility: "visible",
                 }
-                : { visibility: "hidden" }, ...props, children: children }) }));
+                : {
+                    visibility: "hidden",
+                    position: "fixed",
+                    top: "-9999px",
+                    left: "-9999px",
+                }, ...props, children: children }) }));
 });
 DropdownMenuContent.displayName = "DropdownMenuContent";
 const DropdownMenuGroup = React.forwardRef(({ className = "", ...props }, ref) => {
@@ -398,8 +432,8 @@ const DialogClose = ({ children, onClick, ...props }) => {
     return (jsx("button", { "data-slot": "dialog-close", onClick: handleClick, ...props, children: children }));
 };
 
-var css_248z$1 = ".card-module_card__3wuz1{background-color:#fff;border:1px solid #e4e4e7;border-radius:.75rem;box-shadow:0 1px 2px 0 rgba(0,0,0,.05);display:flex;flex-direction:column;gap:1.5rem;padding:1.5rem}.card-module_cardHeader__pqwLn{align-items:start;container-type:inline-size;display:grid;gap:.5rem;grid-auto-rows:min-content;grid-template-rows:auto auto;padding:0 1.5rem}.card-module_cardHeader__pqwLn:has([data-slot=card-action]){grid-template-columns:1fr auto}.card-module_cardHeader__pqwLn.card-module_borderBottom__ZbZO7{padding-bottom:1.5rem}.card-module_cardTitle__Ngfsy{font-weight:600;line-height:1}.card-module_cardDescription__4FhVx{color:#71717a;font-size:.875rem;line-height:1.25rem}.card-module_cardAction__a8y3Q{align-self:start;grid-column-start:2;grid-row:span 2/span 2;grid-row-start:1;justify-self:end}.card-module_cardContent__torbQ{padding:0 1.5rem}.card-module_cardFooter__8KBX0{align-items:center;display:flex;padding:0 1.5rem}.card-module_cardFooter__8KBX0.card-module_borderTop__rO9Sw{padding-top:1.5rem}";
-var styles$1 = {"card":"card-module_card__3wuz1","cardHeader":"card-module_cardHeader__pqwLn","borderBottom":"card-module_borderBottom__ZbZO7","cardTitle":"card-module_cardTitle__Ngfsy","cardDescription":"card-module_cardDescription__4FhVx","cardAction":"card-module_cardAction__a8y3Q","cardContent":"card-module_cardContent__torbQ","cardFooter":"card-module_cardFooter__8KBX0","borderTop":"card-module_borderTop__rO9Sw"};
+var css_248z$1 = ".card-module_card__3wuz1{background-color:#fff;border:1px solid #e4e4e7;border-radius:.75rem;box-shadow:0 1px 2px 0 rgba(0,0,0,.05);display:flex;flex-direction:column;gap:1.5rem;padding:1.5rem}.card-module_cardHeader__pqwLn{align-items:start;container-type:inline-size;display:grid;gap:.5rem;grid-auto-rows:min-content;grid-template-rows:auto auto;padding:0 1.5rem}.card-module_cardHeader__pqwLn:has([data-slot=card-action]){grid-template-columns:1fr auto}.card-module_cardHeader__pqwLn.card-module_borderBottom__ZbZO7{padding-bottom:1.5rem}.card-module_cardTitle__Ngfsy{font-weight:600;line-height:1}.card-module_cardDescription__4FhVx{color:#71717a;font-size:.875rem;line-height:1.25rem}.card-module_cardAction__a8y3Q{align-self:start;grid-column-start:2;grid-row:span 2/span 2;grid-row-start:1;justify-self:end}.card-module_cardFooter__8KBX0{align-items:center;display:flex;padding:0 1.5rem}.card-module_cardFooter__8KBX0.card-module_borderTop__rO9Sw{padding-top:1.5rem}";
+var styles$1 = {"card":"card-module_card__3wuz1","cardHeader":"card-module_cardHeader__pqwLn","borderBottom":"card-module_borderBottom__ZbZO7","cardTitle":"card-module_cardTitle__Ngfsy","cardDescription":"card-module_cardDescription__4FhVx","cardAction":"card-module_cardAction__a8y3Q","cardFooter":"card-module_cardFooter__8KBX0","borderTop":"card-module_borderTop__rO9Sw"};
 styleInject(css_248z$1);
 
 const Card = React.forwardRef(({ className = "", ...props }, ref) => {
@@ -432,7 +466,7 @@ const CardFooter = React.forwardRef(({ className = "", ...props }, ref) => {
 CardFooter.displayName = "CardFooter";
 
 var css_248z = ".widget-module_triggerButton__Z1a56{justify-content:space-between;padding:.625rem 1rem!important;width:100%}.widget-module_triggerContent__RBtt-{align-items:center;display:flex;gap:.5rem}.widget-module_dropdownContent__aOS7Q{width:14rem}.widget-module_allServicesItem__KLt4R{align-items:center;justify-content:space-between}.widget-module_allServicesContent__wDx2Y{align-items:center;display:flex;gap:.5rem}.widget-module_dialogContent__94J6s{overflow-y:auto;padding:1.5rem}.widget-module_dialogHeader__QjUgO{height:-moz-fit-content;height:fit-content}.widget-module_dialogTitle__GMrWa{font-size:1.25rem;font-weight:600;line-height:1.75rem}.widget-module_appsGrid__qq2EM{display:grid;gap:1rem;grid-template-columns:repeat(3,1fr);margin-top:1.5rem}.widget-module_cardClickable__6PMQI{cursor:pointer;transition:box-shadow .15s ease-in-out}.widget-module_cardClickable__6PMQI:hover{box-shadow:0 4px 6px -1px rgba(0,0,0,.1),0 2px 4px -1px rgba(0,0,0,.06)}.widget-module_cardHeader__PTsr-{align-items:start;display:flex;justify-content:space-between;margin-bottom:.75rem;position:relative}.widget-module_iconWrapper__gxQna{align-items:center;display:flex;gap:.75rem;position:relative}.widget-module_iconContainer__cZAEt{position:relative;z-index:10}.widget-module_iconBg__net9X{border-radius:.1875rem;height:1.75rem;left:1rem;position:absolute;top:.5rem;width:1.5rem;z-index:0}.widget-module_externalLinkButton__Q4ixE{cursor:pointer;padding:0}.widget-module_appTitle__sqALF{color:#09090b;font-size:.875rem;font-weight:700;line-height:1.25rem;line-height:1.375;margin-bottom:.5rem}.widget-module_appDescription__uFpTn{color:#64748b;font-size:.75rem;line-height:1rem;line-height:1.625}.widget-module_iconSmall__E-vOL{height:1rem;width:1rem}.widget-module_iconBrand__6-l7x{color:#5c60cc;height:1rem;width:1rem}.widget-module_iconMuted__fLT7o{color:#3f3f46;height:1rem;width:1rem}.widget-module_iconGreen__H0pIx{color:#65a30d;height:1rem;width:1rem}.widget-module_iconFuchsia__uUo2p{color:#a21caf;height:1rem;width:1rem}.widget-module_iconIndigo__lq5uT{color:#4f46e5;height:1rem;width:1rem}.widget-module_iconBlue__pWzV2{color:#4346a2;height:1rem;width:1rem}.widget-module_iconBlueLarge__VnFUb{color:#4346a2;height:2rem;width:2rem}.widget-module_iconOrangeLarge__i8yt5{color:#ea580c;height:2rem;width:2rem}.widget-module_iconIndigoLarge__-IelA{color:#4f46e5;height:2rem;width:2rem}.widget-module_iconLimeLarge__h-lgn{color:#65a30d;height:2rem;width:2rem}.widget-module_iconFuchsiaLarge__rCnAC{color:#c026d3;height:2rem;width:2rem}.widget-module_iconBlueLargePrimary__HeRDG{color:#2563eb;height:2rem;width:2rem}.widget-module_iconRoseLarge__mPXdQ{color:#e11d48;height:2rem;width:2rem}.widget-module_bgBlue__OCHpo{background-color:#ebecff}.widget-module_bgOrange__fp15P{background-color:#fef3c7}.widget-module_bgIndigo__-1bNU{background-color:#e0e7ff}.widget-module_bgLime__Uaj1g{background-color:#ecfccb}.widget-module_bgFuchsia__fOT81{background-color:#fae8ff}.widget-module_bgBluePrimary__-aI22{background-color:#dbeafe}.widget-module_bgAmber__MJw6X{background-color:#fef3c7}.widget-module_bgPink__imJf8{background-color:#fce7f3}.widget-module_bgRose__bcT-E{background-color:#ffe4e6}.widget-module_bgEmerald__mdGJb{background-color:#d1fae5}";
-var styles = {"root":"widget-module_root__xkD2M","triggerButton":"widget-module_triggerButton__Z1a56","triggerContent":"widget-module_triggerContent__RBtt-","dropdownContent":"widget-module_dropdownContent__aOS7Q","allServicesItem":"widget-module_allServicesItem__KLt4R","allServicesContent":"widget-module_allServicesContent__wDx2Y","dialogContent":"widget-module_dialogContent__94J6s","dialogHeader":"widget-module_dialogHeader__QjUgO","dialogTitle":"widget-module_dialogTitle__GMrWa","appsGrid":"widget-module_appsGrid__qq2EM","cardClickable":"widget-module_cardClickable__6PMQI","cardContent":"widget-module_cardContent__-if21","cardHeader":"widget-module_cardHeader__PTsr-","iconWrapper":"widget-module_iconWrapper__gxQna","iconContainer":"widget-module_iconContainer__cZAEt","iconBg":"widget-module_iconBg__net9X","externalLinkButton":"widget-module_externalLinkButton__Q4ixE","appTitle":"widget-module_appTitle__sqALF","appDescription":"widget-module_appDescription__uFpTn","iconSmall":"widget-module_iconSmall__E-vOL","iconBrand":"widget-module_iconBrand__6-l7x","iconMuted":"widget-module_iconMuted__fLT7o","iconGreen":"widget-module_iconGreen__H0pIx","iconFuchsia":"widget-module_iconFuchsia__uUo2p","iconIndigo":"widget-module_iconIndigo__lq5uT","iconBlue":"widget-module_iconBlue__pWzV2","iconBlueLarge":"widget-module_iconBlueLarge__VnFUb","iconOrangeLarge":"widget-module_iconOrangeLarge__i8yt5","iconIndigoLarge":"widget-module_iconIndigoLarge__-IelA","iconLimeLarge":"widget-module_iconLimeLarge__h-lgn","iconFuchsiaLarge":"widget-module_iconFuchsiaLarge__rCnAC","iconBlueLargePrimary":"widget-module_iconBlueLargePrimary__HeRDG","iconRoseLarge":"widget-module_iconRoseLarge__mPXdQ","bgBlue":"widget-module_bgBlue__OCHpo","bgOrange":"widget-module_bgOrange__fp15P","bgIndigo":"widget-module_bgIndigo__-1bNU","bgLime":"widget-module_bgLime__Uaj1g","bgFuchsia":"widget-module_bgFuchsia__fOT81","bgBluePrimary":"widget-module_bgBluePrimary__-aI22","bgAmber":"widget-module_bgAmber__MJw6X","bgPink":"widget-module_bgPink__imJf8","bgRose":"widget-module_bgRose__bcT-E","bgEmerald":"widget-module_bgEmerald__mdGJb"};
+var styles = {"root":"widget-module_root__xkD2M","triggerButton":"widget-module_triggerButton__Z1a56","triggerContent":"widget-module_triggerContent__RBtt-","dropdownContent":"widget-module_dropdownContent__aOS7Q","allServicesItem":"widget-module_allServicesItem__KLt4R","allServicesContent":"widget-module_allServicesContent__wDx2Y","dialogContent":"widget-module_dialogContent__94J6s","dialogHeader":"widget-module_dialogHeader__QjUgO","dialogTitle":"widget-module_dialogTitle__GMrWa","appsGrid":"widget-module_appsGrid__qq2EM","cardClickable":"widget-module_cardClickable__6PMQI","cardHeader":"widget-module_cardHeader__PTsr-","iconWrapper":"widget-module_iconWrapper__gxQna","iconContainer":"widget-module_iconContainer__cZAEt","iconBg":"widget-module_iconBg__net9X","externalLinkButton":"widget-module_externalLinkButton__Q4ixE","appTitle":"widget-module_appTitle__sqALF","appDescription":"widget-module_appDescription__uFpTn","iconSmall":"widget-module_iconSmall__E-vOL","iconBrand":"widget-module_iconBrand__6-l7x","iconMuted":"widget-module_iconMuted__fLT7o","iconGreen":"widget-module_iconGreen__H0pIx","iconFuchsia":"widget-module_iconFuchsia__uUo2p","iconIndigo":"widget-module_iconIndigo__lq5uT","iconBlue":"widget-module_iconBlue__pWzV2","iconBlueLarge":"widget-module_iconBlueLarge__VnFUb","iconOrangeLarge":"widget-module_iconOrangeLarge__i8yt5","iconIndigoLarge":"widget-module_iconIndigoLarge__-IelA","iconLimeLarge":"widget-module_iconLimeLarge__h-lgn","iconFuchsiaLarge":"widget-module_iconFuchsiaLarge__rCnAC","iconBlueLargePrimary":"widget-module_iconBlueLargePrimary__HeRDG","iconRoseLarge":"widget-module_iconRoseLarge__mPXdQ","bgBlue":"widget-module_bgBlue__OCHpo","bgOrange":"widget-module_bgOrange__fp15P","bgIndigo":"widget-module_bgIndigo__-1bNU","bgLime":"widget-module_bgLime__Uaj1g","bgFuchsia":"widget-module_bgFuchsia__fOT81","bgBluePrimary":"widget-module_bgBluePrimary__-aI22","bgAmber":"widget-module_bgAmber__MJw6X","bgPink":"widget-module_bgPink__imJf8","bgRose":"widget-module_bgRose__bcT-E","bgEmerald":"widget-module_bgEmerald__mdGJb"};
 styleInject(css_248z);
 
 // Default quick access apps
@@ -485,7 +519,7 @@ const defaultFullApps = [
         id: "knowledge",
         title: "База знаний",
         description: "Корпоративные стандарты, Регламенты, Шаблоны документов, Руководства и мануалы",
-        icon: jsx(BarChart3, { className: styles.iconIndigoLarge }),
+        icon: jsx(BarChart5, { className: styles.iconIndigoLarge }),
         iconBg: styles.bgIndigo,
         url: "https://wiki.sensata.kz/",
     },
@@ -493,7 +527,7 @@ const defaultFullApps = [
         id: "manager",
         title: "Панель Руководителя. Сервис по планированию графиков",
         description: "Паспорта проектов, универсальный сервис для планирования работ, контроль вех жизненного цикла проекта, графики СМР , отчеты по прогрессу строительства",
-        icon: jsx(BarChart3, { className: styles.iconLimeLarge }),
+        icon: jsx(BarChart4, { className: styles.iconLimeLarge }),
         iconBg: styles.bgLime,
         url: "https://isup.sensata.kz/",
     },
@@ -575,6 +609,12 @@ const defaultFullApps = [
         iconBg: styles.bgAmber,
     },
 ];
+// Helper function to truncate text
+const truncateText = (text, maxLength) => {
+    if (text.length <= maxLength)
+        return text;
+    return text.substring(0, maxLength) + "...";
+};
 // Main component
 const Widget = ({ currentApp, quickAccessApps = defaultQuickAccessApps, fullApps = defaultFullApps, className = "", showAllServicesButton = true, }) => {
     const [isAppsModalOpen, setIsAppsModalOpen] = useState(false);
@@ -602,7 +642,16 @@ const Widget = ({ currentApp, quickAccessApps = defaultQuickAccessApps, fullApps
                                 .map((app) => (jsx(Card, { className: app.url ? styles.cardClickable : "", onClick: () => app.url && handleFullAppClick(app), children: jsxs(CardContent, { className: styles.cardContent, onClick: (e) => {
                                         e.stopPropagation();
                                         handleFullAppClick(app);
-                                    }, children: [jsxs("div", { className: styles.cardHeader, children: [jsxs("div", { className: styles.iconWrapper, children: [jsx("div", { className: styles.iconContainer, children: app.icon }), jsx("div", { className: `${styles.iconBg} ${app.iconBg}` })] }), app?.info && (jsx(Button, { variant: "ghost", size: "icon", className: styles.externalLinkButton, children: jsx(InfoIcon, { className: styles.iconSmall }) }))] }), jsx("h3", { className: styles.appTitle, children: app.title }), jsx("p", { className: styles.appDescription, children: app.description })] }) }, app.id))) })] }) })] }));
+                                    }, children: [jsxs("div", { className: styles.cardHeader, children: [jsxs("div", { className: styles.iconWrapper, children: [jsx("div", { className: styles.iconContainer, children: app.icon }), jsx("div", { className: `${styles.iconBg} ${app.iconBg}` })] }), app?.info && (jsx(Button, { variant: "ghost", size: "icon", className: styles.externalLinkButton, children: jsx(InfoIcon, { className: styles.iconSmall }) }))] }), jsx("h3", { className: styles.appTitle, children: app.title }), jsx("p", { className: styles.appDescription, title: app.id === "macro-erp" ? app.description : undefined, children: app.id === "macro-erp"
+                                                ? (() => {
+                                                    const cutoffText = "заявки на оплату»;";
+                                                    const cutoffIndex = app.description.indexOf(cutoffText);
+                                                    if (cutoffIndex !== -1) {
+                                                        return truncateText(app.description, cutoffIndex + cutoffText.length);
+                                                    }
+                                                    return app.description;
+                                                })()
+                                                : app.description })] }) }, app.id))) })] }) })] }));
 };
 
 export { BarChart3, BookOpen, Brain, Button, Card, CardAction, CardContent, CardDescription, CardFooter, CardHeader, CardTitle, ChevronRight, ChevronsUpDown, Dialog, DialogClose, DialogContent, DialogDescription, DialogFooter, DialogHeader, DialogOverlay, DialogPortal, DialogTitle, DialogTrigger, DropdownMenu, DropdownMenuCheckboxItem, DropdownMenuContent, DropdownMenuGroup, DropdownMenuItem, DropdownMenuLabel, DropdownMenuPortal, DropdownMenuRadioGroup, DropdownMenuRadioItem, DropdownMenuSeparator, DropdownMenuShortcut, DropdownMenuSub, DropdownMenuSubContent, DropdownMenuSubTrigger, DropdownMenuTrigger, FileCheck2, HandMetal, Handshake, Headphones, HeadsetIcon, LayoutGrid, MacroERPIcon, Mail, Newspaper, OneCIcon, PencilRuler, RefbookIcon, SensataServicesIcon, Widget, XIcon, Widget as default };
