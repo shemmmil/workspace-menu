@@ -227,6 +227,12 @@ const defaultFullApps: FullApp[] = [
   },
 ];
 
+// Helper function to truncate text
+const truncateText = (text: string, maxLength: number): string => {
+  if (text.length <= maxLength) return text;
+  return text.substring(0, maxLength) + "...";
+};
+
 // Main component
 export const Widget: React.FC<WidgetProps> = ({
   currentApp,
@@ -345,7 +351,25 @@ export const Widget: React.FC<WidgetProps> = ({
                       )}
                     </div>
                     <h3 className={styles.appTitle}>{app.title}</h3>
-                    <p className={styles.appDescription}>{app.description}</p>
+                    <p
+                      className={styles.appDescription}
+                      title={app.description}
+                    >
+                      {app.id === "macro-erp"
+                        ? (() => {
+                            const cutoffText = "заявки на оплату»;";
+                            const cutoffIndex =
+                              app.description.indexOf(cutoffText);
+                            if (cutoffIndex !== -1) {
+                              return truncateText(
+                                app.description,
+                                cutoffIndex + cutoffText.length
+                              );
+                            }
+                            return app.description;
+                          })()
+                        : app.description}
+                    </p>
                   </CardContent>
                 </Card>
               ))}
