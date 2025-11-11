@@ -564,7 +564,7 @@ const defaultFullApps = [
     },
     {
         id: "plan-radar",
-        title: "Plan Radar",
+        title: "Контроль качества и БиОТ",
         description: "Создания замечаний от служба контроля качества, БиОТ",
         icon: jsx(PencilRuler, { className: styles.iconRoseLarge }),
         iconBg: styles.bgRose,
