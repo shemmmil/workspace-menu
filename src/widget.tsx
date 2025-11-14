@@ -183,7 +183,7 @@ const defaultFullApps: FullApp[] = [
     description: "Создания замечаний от служба контроля качества, БиОТ",
     icon: <PencilRuler className={styles.iconRoseLarge} />,
     iconBg: styles.bgRose,
-    url: "https://www.planradar.com/login?redirect=https://www.planradar.com/dr/1287990?tab=projects",
+    url: "https://quality.sensata.kz/",
   },
   {
     id: "sensata-services",
@@ -192,7 +192,7 @@ const defaultFullApps: FullApp[] = [
       "Подача заявок, оплата услуг, голосования и уведомления от управляющей компании.",
     icon: <SensataServicesIcon />,
     iconBg: styles.bgIndigo,
-    url: "https://services.sensata.kz/",
+    url: "https://www.sensata.kz/about-service?city=nursultan&ysclid=mdn0tl5hmv580549569",
   },
   {
     id: "refbook",
@@ -201,7 +201,7 @@ const defaultFullApps: FullApp[] = [
       "Администрирование справочников: юр.лиц, проекты, статьи расходов, виды работ и др.",
     icon: <RefbookIcon />,
     iconBg: styles.bgEmerald,
-    url: "https://refbook.sensata.kz/",
+    url: "https://wiki.sensata.kz/",
   },
   {
     id: "helpdesk",
