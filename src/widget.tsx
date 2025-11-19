@@ -66,6 +66,7 @@ export interface FullApp {
   url?: string;
   iconBg?: string;
   info?: string;
+  infoLink?: string;
 }
 
 export interface WidgetProps {
@@ -114,6 +115,7 @@ const defaultFullApps: FullApp[] = [
     icon: <Mail className={styles.iconBlueLarge} />,
     iconBg: styles.bgBlue,
     url: "https://mail.sensata.kz/",
+    infoLink: "https://youtu.be/NAzVmDHH-VY?si=jCyro_qwGh-B2JFh",
     info: "Link",
   },
   {
@@ -345,6 +347,12 @@ export const Widget: React.FC<WidgetProps> = ({
                           variant="ghost"
                           size="icon"
                           className={styles.externalLinkButton}
+                          onClick={(e) => {
+                            e.stopPropagation();
+                            if (app.infoLink) {
+                              window.open(app.infoLink, "_blank");
+                            }
+                          }}
                         >
                           <InfoIcon className={styles.iconSmall} />
                         </Button>
