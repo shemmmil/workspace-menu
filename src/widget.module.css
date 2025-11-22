@@ -185,6 +185,12 @@
   color: rgb(192, 38, 211);
 }
 
+.iconFuchsia700Large {
+  width: 2rem;
+  height: 2rem;
+  color:   rgba(162, 28, 175, 1);
+}
+
 .iconBlueLargePrimary {
   width: 2rem;
   height: 2rem;

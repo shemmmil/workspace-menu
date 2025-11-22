@@ -189,6 +189,15 @@ const defaultFullApps: FullApp[] = [
     url: "https://quality.sensata.kz/",
   },
   {
+    id: "sensata-partners",
+    title: "Sensata Partners",
+    description:
+      "Тендерные процедуры, Подписание документов через ЭЦП с контрагентами",
+    icon: <Handshake className={styles.iconFuchsia700Large} />,
+    iconBg: styles.bgFuchsia,
+    url: "https://partners.sensata.kz/home/about",
+  },
+  {
     id: "sensata-services",
     title: "Sensata Services",
     description:
