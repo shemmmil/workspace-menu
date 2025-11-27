@@ -121,7 +121,7 @@ const defaultFullApps: FullApp[] = [
   {
     id: "documentolog",
     title: "Электронный документооборот Documentolog",
-    description: "Служебные записки, кадровый ЭДО, протокольные поручения",
+    description: "Служебные записки, Кадровый ЭДО, Протокольные поручения",
     icon: <Newspaper className={styles.iconOrangeLarge} />,
     iconBg: styles.bgOrange,
     url: "https://doc.sensata.kz/structure/index",
@@ -139,7 +139,7 @@ const defaultFullApps: FullApp[] = [
     id: "manager",
     title: "Sensata Project",
     description:
-      "Паспорта проектов, универсальный сервис для планирования работ, контроль вех жизненного цикла проекта, графики СМР , отчеты по прогрессу строительства",
+      "Паспорта проектов, Универсальный сервис для планирования работ, Контроль вех жизненного цикла проекта, Графики СМР, Отчеты по прогрессу строительства",
     icon: <BarChart4 className={styles.iconLimeLarge} />,
     iconBg: styles.bgLime,
     url: "https://isup.sensata.kz/",
@@ -157,7 +157,7 @@ const defaultFullApps: FullApp[] = [
     id: "bim360",
     title: "Инженерный документооборот BIM360",
     description:
-      "Взаимодействия между проектными организациями, ГИПами, ПТО в части получения ЭП, РП. Возможность просмотра, создания замечаний/запросов на чертежах",
+      "Взаимодействие между проектными организациями, ГИПами, ПТО в части получения ЭП, РП. Возможность просмотра, Создания замечаний/запросов на чертежах",
     icon: <FileCheck2 className={styles.iconBlueLargePrimary} />,
     iconBg: styles.bgBluePrimary,
     url: "https://accounts.autodesk.com/logon?resume=%2Fas%2FrRFI1CMk89%2Fresume%2Fas%2Fauthorization.ping&spentity=null",
@@ -166,7 +166,7 @@ const defaultFullApps: FullApp[] = [
     id: "1c-estimate",
     title: "Сметное производство 1С Смета",
     description:
-      "Сметное производство, контроль бюджета переменных затрат проекта, база индикативных цен",
+      "Сметное производство, Контроль бюджета переменных затрат проекта, База индикативных цен",
     icon: <OneCIcon />,
     iconBg: styles.bgAmber,
   },
@@ -174,7 +174,7 @@ const defaultFullApps: FullApp[] = [
     id: "macro-erp",
     title: "MacroERP",
     description:
-      "Сервис для управления проектами в разрезе оперативного учета; Процессы: «Заявка на договор», «Акты», «Заказ и прием ТМЦ», «Заявки на оплату»;",
+      "Сервис для управления проектами в разрезе оперативного учета; Процессы: «Заявка на договор», «Акты», «Заказ и прием ТМЦ», «Заявки на оплату»",
     icon: <MacroERPIcon />,
     iconBg: styles.bgPink,
     url: "https://macroserver.kz/",
@@ -183,7 +183,7 @@ const defaultFullApps: FullApp[] = [
     id: "plan-radar",
     title: "Sensata Control",
     description:
-      "Создание замечаний от службы контроля качества, БиОТ; Приглашение технадзора на инспекцию скрытых работ;",
+      "Создание замечаний от службы контроля качества, БиОТ; Приглашение технадзора на инспекцию скрытых работ",
     icon: <PencilRuler className={styles.iconRoseLarge} />,
     iconBg: styles.bgRose,
     url: "https://quality.sensata.kz/",
@@ -201,7 +201,7 @@ const defaultFullApps: FullApp[] = [
     id: "sensata-services",
     title: "Sensata Services",
     description:
-      "Подача заявок, оплата услуг, голосования и уведомления от управляющей компании.",
+      "Подача заявок, Оплата услуг, Голосования и уведомления от управляющей компании",
     icon: <SensataServicesIcon />,
     iconBg: styles.bgIndigo,
     url: "https://www.sensata.kz/about-service?city=nursultan&ysclid=mdn0tl5hmv580549569",
@@ -210,24 +210,24 @@ const defaultFullApps: FullApp[] = [
     id: "refbook",
     title: "Sensata NSI",
     description:
-      "Администрирование справочников: юр.лиц, проекты, статьи расходов, виды работ и др.",
+      "Администрирование справочников: Юр.лиц, Проекты, Статьи расходов, Виды работ и др.",
     icon: <RefbookIcon />,
     iconBg: styles.bgEmerald,
-    url: "https://wiki.sensata.kz/",
+    url: "https://nsi.sensata.kz/",
   },
   {
     id: "helpdesk",
     title: "Help Desk (Служба поддержки)",
     description:
-      "Центр управления обращениями пользователей, инцидентами, сервисными запросами и коммуникацией между бизнесом и ИТ",
+      "Центр управления обращениями пользователей, Инцидентами, Сервисными запросами и коммуникацией между бизнесом и ИТ",
     icon: <HeadsetIcon className={styles.iconBlueLargePrimary} />,
-    url: "https://help.sensata.kz/",
+    url: "https://corp.sensata.kz/services",
     iconBg: styles.bgIndigo,
   },
   {
     id: "1c-accounting",
     title: "1С: Бухгалтерия",
-    description: "Бухгалтерский учет, налоги и финансы",
+    description: "Бухгалтерский учет, Налоги и финансы",
     icon: <OneCIcon />,
     iconBg: styles.bgAmber,
   },
@@ -266,7 +266,6 @@ export const Widget: React.FC<WidgetProps> = ({
     if (app.url) {
       window.open(app.url, "_blank");
     }
-    setIsAppsModalOpen(false);
   };
 
   const handleAllServicesClick = () => {
