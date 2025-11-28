@@ -101,7 +101,7 @@ const defaultQuickAccessApps: QuickAccessApp[] = [
     id: "helpdesk",
     title: "Help Desk",
     icon: <Headphones className={styles.iconBlue} />,
-    url: "https://help.sensata.kz/",
+    url: "https://corp.sensata.kz/services",
   },
 ];
 
