@@ -35,6 +35,7 @@ import {
   InfoIcon,
   BarChart4,
   BarChart5,
+  ExternalLinkIcon,
 } from "./components/icons";
 import styles from "./widget.module.css";
 
@@ -365,6 +366,19 @@ export const Widget: React.FC<WidgetProps> = ({
                           }}
                         >
                           <InfoIcon className={styles.iconSmall} />
+                        </Button>
+                      )}
+                      {app.url && !app.info && (
+                        <Button
+                          variant="ghost"
+                          size="icon"
+                          className={styles.externalLinkButton}
+                          onClick={(e) => {
+                            e.stopPropagation();
+                            handleFullAppClick(app);
+                          }}
+                        >
+                          <ExternalLinkIcon className={styles.iconSmall} />
                         </Button>
                       )}
                     </div>
