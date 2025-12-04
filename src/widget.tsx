@@ -200,7 +200,7 @@ const defaultFullApps: FullApp[] = [
   },
   {
     id: "sensata-services",
-    title: "Sensata Services",
+    title: "Sensata Club",
     description:
       "Подача заявок, Оплата услуг, Голосования и уведомления от управляющей компании",
     icon: <SensataServicesIcon />,
@@ -209,7 +209,7 @@ const defaultFullApps: FullApp[] = [
   },
   {
     id: "refbook",
-    title: "Sensata NSI",
+    title: "Sensata MDM",
     description:
       "Администрирование справочников: Юр.лиц, Проекты, Статьи расходов, Виды работ и др.",
     icon: <RefbookIcon />,
