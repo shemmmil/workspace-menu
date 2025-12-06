@@ -36,6 +36,7 @@ import {
   BarChart4,
   BarChart5,
   ExternalLinkIcon,
+  CloudIcon,
 } from "./components/icons";
 import styles from "./widget.module.css";
 
@@ -161,7 +162,7 @@ const defaultFullApps: FullApp[] = [
       "Взаимодействие между проектными организациями, ГИПами, ПТО в части получения ЭП, РП. Возможность просмотра, Создания замечаний/запросов на чертежах",
     icon: <FileCheck2 className={styles.iconBlueLargePrimary} />,
     iconBg: styles.bgBluePrimary,
-    url: "https://accounts.autodesk.com/logon?resume=%2Fas%2FrRFI1CMk89%2Fresume%2Fas%2Fauthorization.ping&spentity=null",
+    url: "https://docs.b360.autodesk.com",
   },
   {
     id: "1c-estimate",
@@ -178,7 +179,7 @@ const defaultFullApps: FullApp[] = [
       "Сервис для управления проектами в разрезе оперативного учета; Процессы: «Заявка на договор», «Акты», «Заказ и прием ТМЦ», «Заявки на оплату»",
     icon: <MacroERPIcon />,
     iconBg: styles.bgPink,
-    url: "https://macroserver.kz/",
+    url: "https://macro.sensata.kz/",
   },
   {
     id: "plan-radar",
@@ -215,6 +216,15 @@ const defaultFullApps: FullApp[] = [
     icon: <RefbookIcon />,
     iconBg: styles.bgEmerald,
     url: "https://nsi.sensata.kz/",
+  },
+  {
+    id: "cloud",
+    title: "Sensata Cloud",
+    description:
+      "Сервис для архивирования и обмена тяжелыми файлами и сканами документов",
+    icon: <CloudIcon className={styles.iconBlueLargePrimary} />,
+    iconBg: styles.bgBluePrimary,
+    url: "https://cloud.sensata.kz/",
   },
   {
     id: "helpdesk",
