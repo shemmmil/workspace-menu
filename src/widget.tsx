@@ -77,6 +77,7 @@ export interface WidgetProps {
   fullApps?: FullApp[];
   className?: string;
   showAllServicesButton?: boolean;
+  onServiceClick?: () => void;
 }
 
 // Default quick access apps
@@ -264,6 +265,7 @@ export const Widget: React.FC<WidgetProps> = ({
   fullApps = defaultFullApps,
   className = "",
   showAllServicesButton = true,
+  onServiceClick = () => {},
 }) => {
   const [isAppsModalOpen, setIsAppsModalOpen] = useState(false);
 
@@ -281,6 +283,7 @@ export const Widget: React.FC<WidgetProps> = ({
 
   const handleAllServicesClick = () => {
     setIsAppsModalOpen(true);
+    onServiceClick?.();
   };
 
   return (
