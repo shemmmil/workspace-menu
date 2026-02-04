@@ -333,13 +333,7 @@ export const Widget: React.FC<WidgetProps> = ({
       </DropdownMenu>
 
       <Dialog open={isAppsModalOpen} onOpenChange={setIsAppsModalOpen}>
-        <DialogContent
-          className={styles.dialogContent}
-          style={{
-            maxWidth: "calc(100vw - 240px)",
-            maxHeight: "95vh",
-          }}
-        >
+        <DialogContent className={styles.dialogContent}>
           <DialogHeader className={styles.dialogHeader}>
             <DialogTitle className={styles.dialogTitle}>
               Список сервисов
