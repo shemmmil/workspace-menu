@@ -332,7 +332,6 @@ export const Widget: React.FC<WidgetProps> = ({
                       <div className={styles.cardHeader}>
                         <div className={styles.iconWrapper}>
                           <div className={styles.iconContainer}>{app.icon}</div>
-                          <div className={`${styles.iconBg} ${app.iconBg}`} />
                         </div>
                         {app?.info && (
                           <Button

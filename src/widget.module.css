@@ -260,10 +260,9 @@
 
 /* Service icon from API */
 .serviceIconImage {
-  width: 2rem;
-  height: 2rem;
+  width: 40px;
+  height: 40px;
   object-fit: contain;
-  border-radius: 0.25rem;
 }
 
 .quickAccessIcon {
