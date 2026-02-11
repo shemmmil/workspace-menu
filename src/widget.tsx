@@ -73,7 +73,7 @@ const getCookie = (name: string): string | null => {
 };
 
 // Hook to fetch IT services from API
-const useITServices = (enabled: boolean = true) => {
+const useITServices = (enabled: boolean = true, token?: string) => {
   const [services, setServices] = useState<ITServiceFromAPI[]>([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<Error | null>(null);
@@ -85,16 +85,17 @@ const useITServices = (enabled: boolean = true) => {
     setError(null);
 
     try {
-      const token = getCookie("accessToken");
+      // Use provided token or fallback to cookie
+      const authToken = token || getCookie("accessToken");
 
-      if (!token) {
+      if (!authToken) {
         throw new Error("No access token found");
       }
 
       const response = await fetch(`${API_BASE_URL}/it-services`, {
         headers: {
           accept: "application/json",
-          authorization: `Bearer ${token}`,
+          authorization: `Bearer ${authToken}`,
         },
         credentials: "include",
       });
@@ -110,7 +111,7 @@ const useITServices = (enabled: boolean = true) => {
     } finally {
       setLoading(false);
     }
-  }, [enabled]);
+  }, [enabled, token]);
 
   useEffect(() => {
     fetchServices();
@@ -176,6 +177,8 @@ export interface WidgetProps {
   className?: string;
   showAllServicesButton?: boolean;
   onServiceClick?: () => void;
+  /** Auth token for API requests (passed from parent app) */
+  token?: string;
 }
 
 // Helper function to truncate text
@@ -190,13 +193,15 @@ export const Widget: React.FC<WidgetProps> = ({
   className = "",
   showAllServicesButton = true,
   onServiceClick = () => {},
+  token,
 }) => {
   const [isAppsModalOpen, setIsAppsModalOpen] = useState(false);
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
 
   // Fetch services from API when dropdown or modal is opened
   const { services, loading, error } = useITServices(
-    isDropdownOpen || isAppsModalOpen
+    isDropdownOpen || isAppsModalOpen,
+    token
   );
 
   // Transform API services to FullApp format
@@ -249,25 +254,31 @@ export const Widget: React.FC<WidgetProps> = ({
         <DropdownMenuContent className={styles.dropdownContent} align="start">
           <DropdownMenuGroup>
             {loading && quickAccessApps.length === 0 && (
-              <DropdownMenuItem disabled>Загрузка...</DropdownMenuItem>
-            )}
-            {!loading &&
-              quickAccessApps
-                .filter((app) => app.id !== currentApp)
-                .map((app) => (
-                  <DropdownMenuItem
-                    key={app.id}
-                    onClick={() => app.url && window.open(app.url, "_blank")}
-                    disabled={!app.url}
-                  >
-                    <img
-                      src={app.icon}
-                      alt={app.title}
-                      className={styles.quickAccessIcon}
-                    />
-                    {app.title}
-                  </DropdownMenuItem>
+              <>
+                {[1, 2, 3, 4].map((i) => (
+                  <div key={i} className={styles.skeletonItem}>
+                    <div className={styles.skeletonIcon} />
+                    <div className={styles.skeletonText} />
+                  </div>
                 ))}
+              </>
+            )}
+            {quickAccessApps
+              .filter((app) => app.id !== currentApp)
+              .map((app) => (
+                <DropdownMenuItem
+                  key={app.id}
+                  onClick={() => app.url && window.open(app.url, "_blank")}
+                  disabled={!app.url}
+                >
+                  <img
+                    src={app.icon}
+                    alt={app.title}
+                    className={styles.quickAccessIcon}
+                  />
+                  {app.title}
+                </DropdownMenuItem>
+              ))}
 
             {showAllServicesButton && (
               <DropdownMenuItem
