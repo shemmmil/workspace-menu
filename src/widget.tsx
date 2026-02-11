@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import { Button } from "./components/ui/button";
 import {
   DropdownMenu,
@@ -15,30 +15,130 @@ import {
 } from "./components/ui/dialog";
 import { Card, CardContent } from "./components/ui/card";
 import {
-  BarChart3,
-  Brain,
   ChevronRight,
   ChevronsUpDown,
-  HandMetal,
-  Headphones,
   LayoutGrid,
-  Mail,
-  Newspaper,
-  FileCheck2,
-  PencilRuler,
-  Handshake,
-  HeadsetIcon,
-  OneCIcon,
-  MacroERPIcon,
-  SensataServicesIcon,
-  RefbookIcon,
   InfoIcon,
-  BarChart4,
-  BarChart5,
   ExternalLinkIcon,
-  CloudIcon,
 } from "./components/icons";
 import styles from "./widget.module.css";
+
+// API Types
+interface ITServiceFromAPI {
+  id: string;
+  title: string;
+  description: string;
+  hyperlink: string | null;
+  hyperlink_video: string | null;
+  icon_image: string;
+  create_date: string;
+  update_date: string;
+  children: ITServiceFromAPI[];
+}
+
+// API Configuration
+const API_BASE_URL = "https://portal-api.sensata.kz/api/v1";
+
+// Quick access service titles (for filtering from API)
+// These match partial titles from API response
+const QUICK_ACCESS_TITLES = [
+  "Sensata Project",
+  "Портал партнеров", // matches "Портал партнеров (тендерная площадка)" - but we want Sensata Partners
+  "Sensata Wiki",
+  "Help Desk", // matches "Help Desk (Служба поддержки)"
+];
+
+// Map API titles to display titles for quick access
+const QUICK_ACCESS_DISPLAY_TITLES: Record<string, string> = {
+  "Sensata Project": "Sensata Project",
+  "Sensata Partners": "Портал партнеров",
+  "Sensata Wiki": "Sensata Wiki",
+  "Help Desk (Служба поддержки)": "Help Desk",
+};
+
+// Titles to match from API for quick access (exact or partial match)
+const QUICK_ACCESS_API_TITLES = [
+  "Sensata Project",
+  "Sensata Partners",
+  "Sensata Wiki",
+  "Help Desk",
+];
+
+// Helper to get cookie value
+const getCookie = (name: string): string | null => {
+  const value = `; ${document.cookie}`;
+  const parts = value.split(`; ${name}=`);
+  if (parts.length === 2) return parts.pop()?.split(";").shift() || null;
+  return null;
+};
+
+// Hook to fetch IT services from API
+const useITServices = (enabled: boolean = true) => {
+  const [services, setServices] = useState<ITServiceFromAPI[]>([]);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState<Error | null>(null);
+
+  const fetchServices = useCallback(async () => {
+    if (!enabled) return;
+
+    setLoading(true);
+    setError(null);
+
+    try {
+      const token = getCookie("accessToken");
+
+      if (!token) {
+        throw new Error("No access token found");
+      }
+
+      const response = await fetch(`${API_BASE_URL}/it-services`, {
+        headers: {
+          accept: "application/json",
+          authorization: `Bearer ${token}`,
+        },
+        credentials: "include",
+      });
+
+      if (!response.ok) {
+        throw new Error(`API error: ${response.status}`);
+      }
+
+      const data: ITServiceFromAPI[] = await response.json();
+      setServices(data);
+    } catch (err) {
+      setError(err instanceof Error ? err : new Error("Unknown error"));
+    } finally {
+      setLoading(false);
+    }
+  }, [enabled]);
+
+  useEffect(() => {
+    fetchServices();
+  }, [fetchServices]);
+
+  return { services, loading, error, refetch: fetchServices };
+};
+
+// Transform API service to FullApp format
+const transformServiceToFullApp = (service: ITServiceFromAPI): FullApp => ({
+  id: service.id,
+  title: service.title,
+  description: service.description,
+  icon: (
+    <img
+      src={service.icon_image}
+      alt={service.title}
+      className={styles.serviceIconImage}
+    />
+  ),
+  url: service.hyperlink || undefined,
+  infoLink: service.hyperlink_video
+    ? service.hyperlink_video.startsWith("http")
+      ? service.hyperlink_video
+      : `https://${service.hyperlink_video}`
+    : undefined,
+  info: service.hyperlink_video ? "Link" : undefined,
+});
 
 // Types
 export type AppId =
@@ -72,185 +172,11 @@ export interface FullApp {
 }
 
 export interface WidgetProps {
-  currentApp?: AppId;
-  quickAccessApps?: QuickAccessApp[];
-  fullApps?: FullApp[];
+  currentApp?: string;
   className?: string;
   showAllServicesButton?: boolean;
   onServiceClick?: () => void;
 }
-
-// Default quick access apps
-const defaultQuickAccessApps: QuickAccessApp[] = [
-  {
-    id: "manager",
-    title: "Sensata Project",
-    icon: <BarChart3 className={styles.iconGreen} />,
-    url: "https://isup.sensata.kz",
-  },
-  {
-    id: "partners",
-    title: "Портал партнеров",
-    icon: <Handshake className={styles.iconFuchsia} />,
-    url: "https://portal-prod.sensata.kz",
-  },
-  {
-    id: "knowledge",
-    title: "Sensata Wiki",
-    icon: <Brain className={styles.iconIndigo} />,
-    url: "https://wiki.sensata.kz/",
-  },
-  {
-    id: "helpdesk",
-    title: "Help Desk",
-    icon: <Headphones className={styles.iconBlue} />,
-    url: "https://corp.sensata.kz/services",
-  },
-];
-
-// Default full apps list
-const defaultFullApps: FullApp[] = [
-  {
-    id: "corporate-mail",
-    title: "Корпоративная почта",
-    description:
-      "Ваш почтовый ящик, Получение важных рассылок, Создание встреч и совещаний",
-    icon: <Mail className={styles.iconBlueLarge} />,
-    iconBg: styles.bgBlue,
-    url: "https://mail.sensata.kz/",
-    infoLink: "https://youtu.be/NAzVmDHH-VY?si=jCyro_qwGh-B2JFh",
-    info: "Link",
-  },
-  {
-    id: "documentolog",
-    title: "Электронный документооборот Documentolog",
-    description: "Служебные записки, Кадровый ЭДО, Протокольные поручения",
-    icon: <Newspaper className={styles.iconOrangeLarge} />,
-    iconBg: styles.bgOrange,
-    url: "https://doc.sensata.kz/structure/index",
-  },
-  {
-    id: "knowledge",
-    title: "Sensata Wiki",
-    description:
-      "Корпоративные стандарты, Регламенты, Шаблоны документов, Руководства и мануалы",
-    icon: <BarChart5 className={styles.iconIndigoLarge} />,
-    iconBg: styles.bgIndigo,
-    url: "https://wiki.sensata.kz/",
-  },
-  {
-    id: "manager",
-    title: "Sensata Project",
-    description:
-      "Паспорта проектов, Универсальный сервис для планирования работ, Контроль вех жизненного цикла проекта, Графики СМР, Отчеты по прогрессу строительства",
-    icon: <BarChart4 className={styles.iconLimeLarge} />,
-    iconBg: styles.bgLime,
-    url: "https://isup.sensata.kz/",
-  },
-  {
-    id: "partners",
-    title: "Портал партнеров (тендерная площадка)",
-    description:
-      "Объявления о тендерах, Документы для участия, Результаты тендеров, Партнерские предложения",
-    icon: <HandMetal className={styles.iconFuchsiaLarge} />,
-    iconBg: styles.bgFuchsia,
-    url: "https://portal-prod.sensata.kz/",
-  },
-  {
-    id: "bim360",
-    title: "Инженерный документооборот BIM360",
-    description:
-      "Взаимодействие между проектными организациями, ГИПами, ПТО в части получения ЭП, РП. Возможность просмотра, Создания замечаний/запросов на чертежах",
-    icon: <FileCheck2 className={styles.iconBlueLargePrimary} />,
-    iconBg: styles.bgBluePrimary,
-    url: "https://docs.b360.autodesk.com",
-  },
-  {
-    id: "1c-estimate",
-    title: "Сметное производство 1С Смета",
-    description:
-      "Сметное производство, Контроль бюджета переменных затрат проекта, База индикативных цен",
-    icon: <OneCIcon />,
-    iconBg: styles.bgAmber,
-  },
-  {
-    id: "macro-erp",
-    title: "MacroERP",
-    description:
-      "Сервис для управления проектами в разрезе оперативного учета; Процессы: «Заявка на договор», «Акты», «Заказ и прием ТМЦ», «Заявки на оплату»",
-    icon: <MacroERPIcon />,
-    iconBg: styles.bgPink,
-    url: "https://macro.sensata.kz/",
-  },
-  {
-    id: "plan-radar",
-    title: "Sensata Control",
-    description:
-      "Создание замечаний от службы контроля качества, БиОТ; Приглашение технадзора на инспекцию скрытых работ",
-    icon: <PencilRuler className={styles.iconRoseLarge} />,
-    iconBg: styles.bgRose,
-    url: "https://quality.sensata.kz/",
-  },
-  {
-    id: "sensata-partners",
-    title: "Sensata Partners",
-    description:
-      "Тендерные процедуры, Подписание документов через ЭЦП с контрагентами",
-    icon: <Handshake className={styles.iconFuchsia700Large} />,
-    iconBg: styles.bgFuchsia,
-    url: "https://partners.sensata.kz/home/about",
-  },
-  {
-    id: "sensata-services",
-    title: "Sensata Club",
-    description:
-      "Подача заявок, Оплата услуг, Голосования и уведомления от управляющей компании",
-    icon: <SensataServicesIcon />,
-    iconBg: styles.bgIndigo,
-    url: "https://www.sensata.kz/about-service?city=nursultan&ysclid=mdn0tl5hmv580549569",
-  },
-  {
-    id: "refbook",
-    title: "Sensata MDM",
-    description:
-      "Администрирование справочников: Юр.лиц, Проекты, Статьи расходов, Виды работ и др.",
-    icon: <RefbookIcon />,
-    iconBg: styles.bgEmerald,
-    url: "https://nsi.sensata.kz/",
-  },
-  {
-    id: "cloud",
-    title: "Sensata Cloud",
-    description:
-      "Сервис для архивирования и обмена тяжелыми файлами и сканами документов",
-    icon: <CloudIcon className={styles.iconBlueLargePrimary} />,
-    iconBg: styles.bgBluePrimary,
-    url: "https://cloud.sensata.kz/",
-  },
-  {
-    id: "helpdesk",
-    title: "Help Desk (Служба поддержки)",
-    description:
-      "Центр управления обращениями пользователей, Инцидентами, Сервисными запросами и коммуникацией между бизнесом и ИТ",
-    icon: <HeadsetIcon className={styles.iconBlueLargePrimary} />,
-    url: "https://corp.sensata.kz/services",
-    iconBg: styles.bgIndigo,
-  },
-  {
-    id: "1c-accounting",
-    title: "1С: Бухгалтерия",
-    description: "Бухгалтерский учет, Налоги и финансы",
-    icon: <OneCIcon />,
-    iconBg: styles.bgAmber,
-  },
-  {
-    id: "1c-hr",
-    title: "1С: ЗУП",
-    description: "Кадровый учет",
-    icon: <OneCIcon />,
-    iconBg: styles.bgAmber,
-  },
-];
 
 // Helper function to truncate text
 const truncateText = (text: string, maxLength: number): string => {
@@ -261,21 +187,40 @@ const truncateText = (text: string, maxLength: number): string => {
 // Main component
 export const Widget: React.FC<WidgetProps> = ({
   currentApp,
-  quickAccessApps = defaultQuickAccessApps,
-  fullApps = defaultFullApps,
   className = "",
   showAllServicesButton = true,
   onServiceClick = () => {},
 }) => {
   const [isAppsModalOpen, setIsAppsModalOpen] = useState(false);
+  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
 
-  const handleQuickAppClick = (app: QuickAccessApp) => {
-    if (app.url) {
-      window.open(app.url, "_blank");
-    }
-  };
+  // Fetch services from API when dropdown or modal is opened
+  const { services, loading, error } = useITServices(
+    isDropdownOpen || isAppsModalOpen
+  );
 
-  const handleFullAppClick = (app: FullApp) => {
+  // Transform API services to FullApp format
+  const displayApps = services.map(transformServiceToFullApp);
+
+  // Filter quick access apps by specific titles and map display names
+  const quickAccessApps = services
+    .filter((service) =>
+      QUICK_ACCESS_API_TITLES.some((title) =>
+        service.title.toLowerCase().includes(title.toLowerCase())
+      )
+    )
+    .map((service) => {
+      const displayTitle =
+        QUICK_ACCESS_DISPLAY_TITLES[service.title] || service.title;
+      return {
+        id: service.id,
+        title: displayTitle,
+        icon: service.icon_image,
+        url: service.hyperlink || undefined,
+      };
+    });
+
+  const handleAppClick = (app: FullApp) => {
     if (app.url) {
       window.open(app.url, "_blank");
     }
@@ -288,7 +233,7 @@ export const Widget: React.FC<WidgetProps> = ({
 
   return (
     <div className={styles.root}>
-      <DropdownMenu>
+      <DropdownMenu onOpenChange={setIsDropdownOpen}>
         <DropdownMenuTrigger asChild>
           <Button
             variant="outline"
@@ -303,18 +248,26 @@ export const Widget: React.FC<WidgetProps> = ({
         </DropdownMenuTrigger>
         <DropdownMenuContent className={styles.dropdownContent} align="start">
           <DropdownMenuGroup>
-            {quickAccessApps
-              .filter((app) => app.id !== currentApp)
-              .map((app) => (
-                <DropdownMenuItem
-                  key={app.id}
-                  onClick={() => handleQuickAppClick(app)}
-                  disabled={!app.url}
-                >
-                  {app.icon}
-                  {app.title}
-                </DropdownMenuItem>
-              ))}
+            {loading && quickAccessApps.length === 0 && (
+              <DropdownMenuItem disabled>Загрузка...</DropdownMenuItem>
+            )}
+            {!loading &&
+              quickAccessApps
+                .filter((app) => app.id !== currentApp)
+                .map((app) => (
+                  <DropdownMenuItem
+                    key={app.id}
+                    onClick={() => app.url && window.open(app.url, "_blank")}
+                    disabled={!app.url}
+                  >
+                    <img
+                      src={app.icon}
+                      alt={app.title}
+                      className={styles.quickAccessIcon}
+                    />
+                    {app.title}
+                  </DropdownMenuItem>
+                ))}
 
             {showAllServicesButton && (
               <DropdownMenuItem
@@ -340,85 +293,98 @@ export const Widget: React.FC<WidgetProps> = ({
             </DialogTitle>
           </DialogHeader>
           <div className={styles.appsGrid}>
-            {fullApps
-              .filter((app) => app.id !== currentApp)
-              .map((app) => (
-                <Card
-                  key={app.id}
-                  className={app.url ? styles.cardClickable : ""}
-                  onClick={() => app.url && handleFullAppClick(app)}
-                >
-                  <CardContent
-                    className={styles.cardContent}
-                    onClick={(e) => {
-                      e.stopPropagation();
-                      handleFullAppClick(app);
-                    }}
+            {loading && (
+              <div className={styles.loadingState}>Загрузка сервисов...</div>
+            )}
+            {error && (
+              <div className={styles.errorState}>
+                Ошибка загрузки: {error.message}
+              </div>
+            )}
+            {!loading &&
+              !error &&
+              displayApps
+                .filter((app) => app.id !== currentApp)
+                .map((app) => (
+                  <Card
+                    key={app.id}
+                    className={app.url ? styles.cardClickable : ""}
+                    onClick={() => app.url && handleAppClick(app)}
                   >
-                    <div className={styles.cardHeader}>
-                      <div className={styles.iconWrapper}>
-                        <div className={styles.iconContainer}>{app.icon}</div>
-                        <div className={`${styles.iconBg} ${app.iconBg}`} />
-                      </div>
-                      {app?.info && (
-                        <Button
-                          variant="ghost"
-                          size="icon"
-                          className={styles.externalLinkButton}
-                          onClick={(e) => {
-                            e.stopPropagation();
-                            if (app.infoLink) {
-                              window.open(app.infoLink, "_blank");
-                            }
-                          }}
-                        >
-                          <InfoIcon className={styles.iconSmall} />
-                        </Button>
-                      )}
-                      {app.url && !app.info && (
-                        <Button
-                          variant="ghost"
-                          size="icon"
-                          className={styles.externalLinkButton}
-                          onClick={(e) => {
-                            e.stopPropagation();
-                            handleFullAppClick(app);
-                          }}
-                        >
-                          <ExternalLinkIcon className={styles.iconSmall} />
-                        </Button>
-                      )}
-                    </div>
-                    <h3 className={styles.appTitle}>{app.title}</h3>
-                    <p
-                      className={styles.appDescription}
-                      title={
-                        app.id === "macro-erp" ? app.description : undefined
-                      }
+                    <CardContent
+                      className={styles.cardContent}
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        handleAppClick(app);
+                      }}
                     >
-                      {app.id === "macro-erp"
-                        ? (() => {
-                            const cutoffText = "заявки на оплату»;";
-                            const cutoffIndex =
-                              app.description.indexOf(cutoffText);
-                            if (cutoffIndex !== -1) {
-                              return truncateText(
-                                app.description,
-                                cutoffIndex + cutoffText.length
-                              );
-                            }
-                            return app.description;
-                          })()
-                        : app.description}
-                    </p>
-                  </CardContent>
-                </Card>
-              ))}
+                      <div className={styles.cardHeader}>
+                        <div className={styles.iconWrapper}>
+                          <div className={styles.iconContainer}>{app.icon}</div>
+                          <div className={`${styles.iconBg} ${app.iconBg}`} />
+                        </div>
+                        {app?.info && (
+                          <Button
+                            variant="ghost"
+                            size="icon"
+                            className={styles.externalLinkButton}
+                            onClick={(e) => {
+                              e.stopPropagation();
+                              if (app.infoLink) {
+                                window.open(app.infoLink, "_blank");
+                              }
+                            }}
+                          >
+                            <InfoIcon className={styles.iconSmall} />
+                          </Button>
+                        )}
+                        {app.url && !app.info && (
+                          <Button
+                            variant="ghost"
+                            size="icon"
+                            className={styles.externalLinkButton}
+                            onClick={(e) => {
+                              e.stopPropagation();
+                              handleAppClick(app);
+                            }}
+                          >
+                            <ExternalLinkIcon className={styles.iconSmall} />
+                          </Button>
+                        )}
+                      </div>
+                      <h3 className={styles.appTitle}>{app.title}</h3>
+                      <p
+                        className={styles.appDescription}
+                        title={
+                          app.id === "macro-erp" ? app.description : undefined
+                        }
+                      >
+                        {app.id === "macro-erp"
+                          ? (() => {
+                              const cutoffText = "заявки на оплату»;";
+                              const cutoffIndex =
+                                app.description.indexOf(cutoffText);
+                              if (cutoffIndex !== -1) {
+                                return truncateText(
+                                  app.description,
+                                  cutoffIndex + cutoffText.length
+                                );
+                              }
+                              return app.description;
+                            })()
+                          : app.description}
+                      </p>
+                    </CardContent>
+                  </Card>
+                ))}
           </div>
         </DialogContent>
       </Dialog>
     </div>
   );
 };
+
+// Export hook for external use
+export { useITServices };
 
 export default Widget;

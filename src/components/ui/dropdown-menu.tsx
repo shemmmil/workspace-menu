@@ -15,15 +15,21 @@ const DropdownMenuContext = React.createContext<
 
 export interface DropdownMenuProps {
   children: React.ReactNode;
+  onOpenChange?: (open: boolean) => void;
 }
 
-export const DropdownMenu: React.FC<DropdownMenuProps> = ({ children }) => {
+export const DropdownMenu: React.FC<DropdownMenuProps> = ({ children, onOpenChange }) => {
   const [open, setOpen] = useState(false);
   const triggerRef = useRef<HTMLElement | null>(null);
 
+  const handleOpenChange = useCallback((newOpen: boolean) => {
+    setOpen(newOpen);
+    onOpenChange?.(newOpen);
+  }, [onOpenChange]);
+
   return (
     <DropdownMenuContext.Provider
-      value={{ open, onOpenChange: setOpen, triggerRef }}
+      value={{ open, onOpenChange: handleOpenChange, triggerRef }}
     >
       <div className={styles.dropdownMenu} data-slot="dropdown-menu">
         {children}

@@ -258,3 +258,39 @@
   background-color: rgb(209, 250, 229);
 }
 
+/* Service icon from API */
+.serviceIconImage {
+  width: 2rem;
+  height: 2rem;
+  object-fit: contain;
+  border-radius: 0.25rem;
+}
+
+.quickAccessIcon {
+  width: 1rem;
+  height: 1rem;
+  object-fit: contain;
+  border-radius: 0.125rem;
+}
+
+/* Loading and error states */
+.loadingState {
+  grid-column: 1 / -1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 3rem;
+  color: rgb(100, 116, 139);
+  font-size: 0.875rem;
+}
+
+.errorState {
+  grid-column: 1 / -1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 3rem;
+  color: rgb(239, 68, 68);
+  font-size: 0.875rem;
+}
+
