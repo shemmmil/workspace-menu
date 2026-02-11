@@ -18,14 +18,20 @@ export interface DropdownMenuProps {
   onOpenChange?: (open: boolean) => void;
 }
 
-export const DropdownMenu: React.FC<DropdownMenuProps> = ({ children, onOpenChange }) => {
+export const DropdownMenu: React.FC<DropdownMenuProps> = ({
+  children,
+  onOpenChange,
+}) => {
   const [open, setOpen] = useState(false);
   const triggerRef = useRef<HTMLElement | null>(null);
 
-  const handleOpenChange = useCallback((newOpen: boolean) => {
-    setOpen(newOpen);
-    onOpenChange?.(newOpen);
-  }, [onOpenChange]);
+  const handleOpenChange = useCallback(
+    (newOpen: boolean) => {
+      setOpen(newOpen);
+      onOpenChange?.(newOpen);
+    },
+    [onOpenChange]
+  );
 
   return (
     <DropdownMenuContext.Provider
@@ -56,7 +62,9 @@ export const DropdownMenuTrigger: React.FC<DropdownMenuTriggerProps> = ({
     }
   }, [context]);
 
-  const handleClick = () => {
+  const handleClick = (e: React.MouseEvent) => {
+    e.preventDefault();
+    e.stopPropagation();
     context?.onOpenChange(!context.open);
   };
 
@@ -74,9 +82,13 @@ export const DropdownMenuTrigger: React.FC<DropdownMenuTriggerProps> = ({
   };
 
   if (asChild) {
+    const childOnClick = (children as any).props?.onClick;
     return React.cloneElement(children, {
       ref: setRef,
-      onClick: handleClick,
+      onClick: (e: React.MouseEvent) => {
+        handleClick(e);
+        childOnClick?.(e);
+      },
       "data-slot": "dropdown-menu-trigger",
     });
   }

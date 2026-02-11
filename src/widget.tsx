@@ -77,20 +77,61 @@ const useITServices = (enabled: boolean = true, token?: string) => {
   const [services, setServices] = useState<ITServiceFromAPI[]>([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<Error | null>(null);
+  const hasFetched = React.useRef(false);
 
-  const fetchServices = useCallback(async () => {
-    if (!enabled) return;
+  useEffect(() => {
+    if (!enabled || hasFetched.current) return;
 
+    const fetchServices = async () => {
+      setLoading(true);
+      setError(null);
+
+      try {
+        // Use provided token or fallback to cookie
+        const authToken = token || getCookie("accessToken");
+
+        if (!authToken) {
+          throw new Error("No access token found");
+        }
+
+        const response = await fetch(`${API_BASE_URL}/it-services`, {
+          headers: {
+            accept: "application/json",
+            authorization: `Bearer ${authToken}`,
+          },
+          credentials: "include",
+        });
+
+        if (!response.ok) {
+          throw new Error(`API error: ${response.status}`);
+        }
+
+        const data: ITServiceFromAPI[] = await response.json();
+        setServices(data);
+        hasFetched.current = true;
+      } catch (err) {
+        setError(err instanceof Error ? err : new Error("Unknown error"));
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchServices();
+  }, [enabled, token]);
+
+  // Reset when token changes
+  useEffect(() => {
+    hasFetched.current = false;
+  }, [token]);
+
+  const refetch = useCallback(async () => {
+    hasFetched.current = false;
     setLoading(true);
     setError(null);
 
     try {
-      // Use provided token or fallback to cookie
       const authToken = token || getCookie("accessToken");
-
-      if (!authToken) {
-        throw new Error("No access token found");
-      }
+      if (!authToken) throw new Error("No access token found");
 
       const response = await fetch(`${API_BASE_URL}/it-services`, {
         headers: {
@@ -100,24 +141,19 @@ const useITServices = (enabled: boolean = true, token?: string) => {
         credentials: "include",
       });
 
-      if (!response.ok) {
-        throw new Error(`API error: ${response.status}`);
-      }
+      if (!response.ok) throw new Error(`API error: ${response.status}`);
 
       const data: ITServiceFromAPI[] = await response.json();
       setServices(data);
+      hasFetched.current = true;
     } catch (err) {
       setError(err instanceof Error ? err : new Error("Unknown error"));
     } finally {
       setLoading(false);
     }
-  }, [enabled, token]);
+  }, [token]);
 
-  useEffect(() => {
-    fetchServices();
-  }, [fetchServices]);
-
-  return { services, loading, error, refetch: fetchServices };
+  return { services, loading, error, refetch };
 };
 
 // Transform API service to FullApp format
